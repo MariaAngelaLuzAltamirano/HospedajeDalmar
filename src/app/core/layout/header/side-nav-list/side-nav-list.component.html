@@ -1,0 +1,10 @@
+<div><img src="./../../../../../assets/Hospedaje Dalmar.png" height="100px" width="100px"></div>
+<mat-nav-list>
+    <mat-list-item *ngFor="let list of navList">
+    <a [routerLink]="list.link" (click)="funcionClose()">{{list.title}} 
+        <button mat-icon-button>
+            <mat-icon>{{list.icon}}</mat-icon>
+        </button>
+        </a>
+    </mat-list-item>
+</mat-nav-list>

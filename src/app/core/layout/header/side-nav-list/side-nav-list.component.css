@@ -1,0 +1,18 @@
+img{
+    border-radius: 50%;
+    display: block;
+    margin: 1rem auto 0 auto;
+}
+
+mat-nav-list{
+    padding-top: 1rem;
+}
+
+a{
+    display: block;
+    margin: 0 auto;
+}
+
+a:hover, a:active{
+    color: lightgray;
+}

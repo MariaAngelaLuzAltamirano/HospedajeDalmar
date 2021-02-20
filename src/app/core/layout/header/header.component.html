@@ -1,0 +1,27 @@
+<div class="conteinerNavbar">
+  <div class="navFooter"></div>
+  <mat-list>
+    <div><a href="https://goo.gl/maps/S764i7bJf84bAnYT8" target="_blank"><mat-icon color="primary">room</mat-icon>Vicente Castro, Nono, Argentina</a></div>
+    <div><a><mat-icon color="primary" id="call">call</mat-icon>+54 (3544) 556688</a></div>
+    <div><a><mat-icon color="primary" id="email">email</mat-icon>marian_1490_1@hotmail.com</a></div>
+    <div><a href="http://facebook.com/HospedajeDalmar" target="_blank"><mat-icon color="primary">facebook</mat-icon>HospedajeDalmar</a></div>
+  </mat-list>
+
+  <mat-toolbar color="secondary">
+      <div><img src="./../../../../../assets/Hospedaje Dalmar.png" height="100px" width="100px"></div>
+      <span class="example-spacer"></span>
+      <div>
+        <mat-nav-list>
+          <mat-list-item mat-button *ngFor="let list of navList">
+          <a class="botonesNavbar" [routerLink]="list.link">{{list.title}}</a>
+          <!-- <a [routerDirection] ="'root'" class="botonesNavbar" mat-button [routerLink]="/#contacto">CONTACTO</a> -->
+        </mat-list-item>
+        </mat-nav-list>
+      </div>
+      <div class="botonMenu">
+        <button mat-mini-fab color="primary" (click)="funcionToggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+  </mat-toolbar>
+</div>

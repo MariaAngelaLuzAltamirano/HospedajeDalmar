@@ -1,0 +1,78 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+img{
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    top: 0.5rem;
+}
+
+.botonesNavbar{
+    padding-right: 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.navFooter{
+    height: 2rem;
+    background-color: #006064;
+}
+
+
+mat-list, mat-nav-list{
+    display: none;
+}
+
+
+.conteinerNavbar{
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+
+}
+
+
+
+
+@media (min-width: 768px) {
+   
+    .navFooter{
+        display: none;
+    }
+    mat-list{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 1rem;
+        background-color: #006064;
+    }
+    mat-list a{
+        text-decoration: none;
+        display: flex; 
+        color: #F5F5F5;
+    }
+    
+    mat-list div{
+        color: #F5F5F5 !important;
+        padding-right: 2rem;
+    }
+    
+    mat-icon{
+        padding-right: 2rem;
+        color: #F5F5F5 !important;
+    }
+
+    mat-nav-list{
+        display: flex;
+    }
+    .botonMenu{
+        visibility: hidden;
+    }
+  
+
+}
+

@@ -1,0 +1,205 @@
+.contenedor{
+    padding: 7rem 0 1rem 0;
+}
+.example-card {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+h2, p{
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+h2{
+    padding-top: 2rem;
+    font-weight: bold;
+    font-size: 1.75rem;
+}
+
+.servicios-card p {
+    padding-top: 1rem;
+}
+
+.servicios-card div{
+    height: 2px;
+    background-color:#006064;
+    border-radius: 80%;
+    opacity: 0.5;
+}
+
+mat-list{
+    display: flex;
+    justify-content: space-between;
+}
+mat-icon{
+    font-size: 40px;
+    width: 40px;
+}
+mat-icon-button{
+    line-height: 0;
+}
+fa-icon{
+    font-size: 30px;
+}
+.detalles{
+    width: 100%;
+    margin-top: 1rem;
+}
+.btn-newCard{
+    display: block;
+    min-width: 15rem;
+    margin: 2rem auto;
+}
+
+.mat-form-field{
+    padding: 1rem 0 0 1rem;
+    width: 150px;
+}
+
+.whatsapp{
+    width: 100%;
+    margin: 0.5rem 0 0 0 !important;
+}
+
+button img{
+    height: 35px;
+    width: 45px;
+    border-radius: 50%;
+}
+
+.valorNoche{
+    margin: 0;
+    padding-top: 2rem;
+}
+
+span{
+    font-size: 1.25rem;
+    font-weight: lighter;
+}
+
+.button-card{
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+}
+
+.button-card button{
+    margin-left: 2rem;
+}
+
+.button-card button mat-icon{
+    font-size: 1.6rem;
+}
+
+
+
+@media (min-width: 768px) {
+    .contenedor{
+        padding: 7rem 3rem 1rem 3rem;
+    }
+    .example-card{
+        max-height: 500px;
+        min-width: 100%;
+        display: flex;
+        margin: 2rem 0;
+        justify-content: space-around;
+        align-items: center;
+        padding: 2rem;
+        border: 1px solid #B8DEDA;
+    }
+
+    .card-carousel{
+        width: 500px;
+    }
+
+    .card-details{
+        min-width: 45rem;
+    }
+    .card-header{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    mat-card-content{
+        display: flex;
+        flex-direction: column;        
+        margin: 0;
+    }
+    mat-list{
+        width: 70%;
+    }
+
+    mat-card-actions{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    form{
+        width: 90%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .detalles{
+        width: 70%;
+    }
+
+    .servicios-card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .servicios-card div{
+        width: 100%;
+    }
+
+    .btn-newCard{
+        min-width: 25rem;
+        margin: 2rem auto;
+    }
+
+    .box-img{
+        max-width: 25rem;
+        overflow: hidden;
+    }
+
+    .box-img img{
+        width: 100%;
+        height: auto;
+        margin: auto 0;
+        display: block;
+    }
+
+    .mat-card-image:first-child{
+        margin: 0;
+    }
+
+    .mat-form-field{
+        padding-top: 1rem;
+        width: 12.5rem;
+    }
+
+    .whatsapp{
+        width: 30%;
+        padding-right: 2rem;
+    }
+
+    .valorNoche{
+        padding-top: 1rem;
+        padding-left: 2rem;
+    }
+    .finalCard{
+        display: flex; 
+        justify-content:center;
+        width: 100%;
+    }
+
+    .button-card{
+        justify-content: flex-end;
+        padding-top: 0;
+    }
+
+}

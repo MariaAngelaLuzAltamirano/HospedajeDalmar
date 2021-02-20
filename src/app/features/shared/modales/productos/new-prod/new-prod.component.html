@@ -1,0 +1,39 @@
+<div>
+    <form [formGroup]="CardUp" (ngSubmit)="onUpload()">
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Nombre del producto" formControlName="nombre">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Capacidad</mat-label>
+            <input matInput placeholder="Capacidad" formControlName="capacidad">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="descripcion" placeholder="La habitacion cuenta con..." type="text" required></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Valor Por Noche</mat-label>
+            <input matInput placeholder="Precio del Producto" formControlName="valorPorNoche">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Servicios</mat-label>
+            <mat-select placeholder="Servicios" multiple formControlName="servicios">
+                <mat-option value="bed">Cama</mat-option>
+                <mat-option value="bathtub">Baño privado</mat-option>
+                <mat-option value="countertops">Cocina</mat-option>
+                <mat-option value="garage">Cochera</mat-option>
+                <mat-option value="tv">Televisión</mat-option>
+                <mat-option value="wifi">Internet</mat-option>                
+                <mat-option value="phone">Telefono</mat-option>
+                <mat-option value="ac_unit">Aire Acondicionado</mat-option>
+                <mat-option value="balcony">Balcon</mat-option>
+                <mat-option value="local_fire_department">Calefacción</mat-option>
+                <mat-option value="lock">Seguridad</mat-option>
+                <mat-option value="pets">Ingreso de Mascotas</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <p>Importante: Las imagenes son cargadas individualmente luego de creada la Ficha</p>
+        <button [disabled]="CardUp.invalid" mat-raised-button color="primary" type="submit" [mat-dialog-close]="true">Enviar</button>
+    </form>
+</div>

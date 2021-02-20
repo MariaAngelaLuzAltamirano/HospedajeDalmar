@@ -1,0 +1,43 @@
+.contenedor-login{
+    max-height: 100vh;
+    padding: 5rem 1rem;
+    background-image: url("https://i.pinimg.com/originals/30/b4/55/30b45544b8488a70ec712ca95d0c6bbb.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+.contenedor-login::before{
+    content: "";
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, #F5F5F5, #d3d3d3);
+    opacity: 0.1;
+}
+
+mat-card{
+    max-width: 25rem;
+    margin: 2rem auto;
+    text-align: center;
+    height: 26rem;
+    border-radius: 10%;
+    opacity: 0.9;
+}
+
+.max-width{
+    width: 100%;
+}
+
+h1{
+    color: white;
+    background-color: #006064;
+}
+
+button{
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 1.25rem;
+}

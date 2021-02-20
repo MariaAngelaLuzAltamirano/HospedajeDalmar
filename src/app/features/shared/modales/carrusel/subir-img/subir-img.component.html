@@ -1,0 +1,11 @@
+<div>
+    <form [formGroup]="imgUp" (ngSubmit)="onUpload()">
+        <div class="custom-file">
+            <label>
+                <mat-icon color="primary">add</mat-icon><span>Elige una Imagen</span>
+                <input type="file" accept="image/*" formControlName="imagen" (change)= "handleImage($event)" >
+            </label>
+        </div>
+        <button [disabled]="imgUp.invalid" mat-raised-button color="primary" type="submit" [mat-dialog-close]="true">Enviar</button>
+    </form>
+</div>

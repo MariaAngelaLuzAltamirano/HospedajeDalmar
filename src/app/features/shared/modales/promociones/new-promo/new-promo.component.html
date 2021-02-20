@@ -1,0 +1,24 @@
+<div>
+    <form [formGroup]="CardUp" (ngSubmit)="cardUpload()">
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Nombre del producto" formControlName="nombre">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Promo</mat-label>
+            <input matInput placeholder="Promocion" formControlName="capacidad">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="descripcion" placeholder="La promocion consiste..." type="text" required></textarea>
+        </mat-form-field>
+        <div class="custom-file">
+            <label>
+                <mat-icon color="primary">add</mat-icon><span>Elige una Imagen</span>
+                <input type="file" accept="image/*" formControlName="imagen" (change)= "handleImage($event)" >
+            </label>
+        </div>
+        <button [disabled]="CardUp.invalid" mat-raised-button color="primary" type="submit" [mat-dialog-close]="true">Enviar</button>
+    </form>
+</div>
+

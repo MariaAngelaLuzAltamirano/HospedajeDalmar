@@ -1,0 +1,27 @@
+form{
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+input[type= 'file']{
+    display: none;
+}
+button{
+    width: 100%;
+    margin-top: 2rem;
+}
+.custom-file{
+    border: 1px solid #ccc;
+    display: inline-block;
+    width: 100%;
+}
+label{
+    display: flex;
+    cursor:pointer;
+}
+span{
+    padding-top: 0.25rem;
+}
+mat-icon{
+    margin: 0 4rem 0 1rem;
+}

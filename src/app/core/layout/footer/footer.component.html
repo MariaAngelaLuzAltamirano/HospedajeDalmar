@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="imagenFooter">
+        <img src="./../../../../../assets/Hospedaje Dalmar.png" height="250px" width="250px">
+        <p>A una 1hs 30m de Córdoba Capital <br> te invitamos a conocer uno de los pasaijes mas hermosos de las Sierras Cordobesas.</p>
+    </div>
+    
+    <form [formGroup]="form" #noteForm="ngForm" (ngSubmit)="onMessage()">
+        <h4>Contacto</h4>
+        <mat-form-field class="half-width">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre" placeholder="Hola que tal!!" type="text" required>
+        </mat-form-field>
+
+        <mat-form-field class="half-width">
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="apellido" placeholder="Hola que tal!!" type="text" required>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Celular</mat-label>
+            <input matInput formControlName="celular" placeholder="Sin el 0 y el 15" type="tel" required pattern="[0-9]{10}">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Te responderemos lo antes posible..." type="mail" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+        </mat-form-field>
+    
+        <mat-form-field class="full-width">
+        <mat-label>Dejanos un comentario /consulta</mat-label>
+        <textarea matInput formControlName="mensaje" placeholder="Me encanto la estadia..." type="text" required></textarea>
+        </mat-form-field>
+
+        <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit">Enviar</button>
+    </form>
+    <mat-list>
+        <mat-list-item><a href="https://goo.gl/maps/S764i7bJf84bAnYT8" target="_blank"><mat-icon color="primary" id="ubication">room</mat-icon><div>Vicente Castro, Nono, Argentina</div></a></mat-list-item>
+        <mat-list-item><mat-icon id="call" color="primary">call</mat-icon>+54 (3544) 556688</mat-list-item>
+        <mat-list-item><mat-icon id="email" color="primary">email</mat-icon>marian_1490_1@hotmail.com</mat-list-item>
+        <mat-list-item><a  href="http://facebook.com/HospedajeDalmar" target="_blank"><mat-icon id="facebook" color="primary">facebook</mat-icon><div>HospedajeDalmar</div></a></mat-list-item>
+    </mat-list>
+
+</div>
+
+<mat-toolbar color="primary">
+    <span>&copy; {{year | date: 'yyyy'}} Hospedaje Dalmar</span>
+</mat-toolbar>

@@ -1,0 +1,112 @@
+.container{
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    background-image: url("./../../../../assets/16841-azul.jpg");
+    background-size: cover;
+}
+.imagenFooter{
+    width: 300px;
+    margin: auto;
+    padding: 2rem 0;
+}
+
+img{
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+}
+
+span{
+    display: block;
+    font-size: 1rem;
+    margin: 0 auto;
+}
+
+form{
+  padding: 2rem;
+  min-width: 150px;
+  max-width: 350px;
+  margin: auto;
+}
+
+button{
+    display:block;
+    margin: 0 auto;
+}
+.half-width {
+    width: 50%;
+}
+
+.full-width {
+    width: 100%;
+}
+mat-form-field{
+    padding: 0.5rem 0;
+}
+
+mat-list{
+    padding-top: 2rem;
+    width: 300px;
+    margin: auto;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    display: flex;  
+}
+mat-list-item div{
+ padding-top: 0.25rem;
+}
+
+mat-icon{
+    padding-right: 2rem;
+}
+mat-icon:hover{
+    transform : scale(1.25);
+    -moz-transform : scale(1.25); /* Firefox */
+    -webkit-transform : scale(1.25); /* Chrome - Safari */
+    -o-transform : scale(1.25); /* Opera */
+    -ms-transform : scale(1.25); /* IE9 */
+    
+}
+
+#ubication:hover{
+    color: #C0392B;
+}
+#call:hover{
+    color: #d6aa0a;
+}
+#email:hover{
+    color: #39ad4e;
+}
+#facebook:hover{
+    color: #285296;
+}
+
+
+h4{
+    text-align: center;
+    font-size: 2rem;
+    text-decoration: underline;
+    margin: 0;
+}
+p{
+    max-width: 250px;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+    margin: auto;
+    padding-top: 1rem;
+}
+
+
+@media (min-width: 768px) {
+    .container{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+}

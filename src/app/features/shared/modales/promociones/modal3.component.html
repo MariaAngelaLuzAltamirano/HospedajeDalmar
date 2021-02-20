@@ -1,0 +1,10 @@
+<h1>{{data.message}}</h1>
+<mat-dialog-content>
+    <div *ngIf="data.info; else newCard">
+        <app-edit-promo [card]="data.info"></app-edit-promo>
+    </div>
+    <ng-template #newCard>
+        <app-new-promo></app-new-promo>
+    </ng-template>
+</mat-dialog-content>
+

@@ -1,0 +1,32 @@
+/* Structure */
+table {
+    width: 95%;
+    margin-left: 1rem;
+}
+mat-form-field{
+    padding: 0 1rem;    
+    font-size: 1.5rem;
+    width: 100%;
+}
+th{
+    font-size: 1.5rem;
+}
+td{
+    font-size: 1rem;
+}
+
+mat-paginator{
+    margin: 1rem 2rem 1rem 1rem;
+}
+button{
+    margin-left: 0.5rem;
+}
+
+.resaltado { background-color: #3bffde3a; }
+
+@media (min-width: 768px) {
+    table{
+        margin-left: 2rem;
+    }
+    
+}

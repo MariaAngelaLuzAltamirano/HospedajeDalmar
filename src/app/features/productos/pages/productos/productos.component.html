@@ -1,0 +1,125 @@
+<div *ngIf="modo==='normal'" class="contenedor">
+    <mat-card class="example-card" *ngFor="let producto of productos">
+        <div class="card-carousel">
+            <app-carousel [items]="producto.producto.imgs" [database]= "databaseProd" [carpeta]= "carpetaProd" [id]="producto.producto.id" [height]="400"></app-carousel>
+        </div>
+        <div class="card-details">
+            <mat-card-content>    
+                <div class="servicios-card">
+                    <h2>{{producto.producto.nombre}} <span>para {{producto.producto.capacidad}}</span></h2>
+                    <div></div>
+                    <p>Servicios</p>
+                    <mat-list>
+                        <button mat-icon-button color="primary" class="iconosFa" *ngFor="let item of producto.producto.servicios; let i = index">
+                        <mat-icon>{{item}}</mat-icon>
+                        </button>
+                    </mat-list>
+                    <button class="detalles" mat-raised-button color="primary" (click)="verMas(producto.producto)">Detalles</button>
+                </div>
+                <mat-card-actions>
+                    <form [formGroup]="producto.form">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Ingrese el rango de Fechas</mat-label>
+                            <mat-date-range-input formGroupName="range"
+                            [dateFilter]="unavaibleDays"
+                            [rangePicker]="picker">
+                              <input matStartDate formControlName="start" placeholder="F. Ingreso">
+                              <input matEndDate formControlName="end" placeholder="F. Egreso">
+                            </mat-date-range-input>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-date-range-picker #picker></mat-date-range-picker>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Adultos</mat-label>
+                            <mat-select formControlName="adulto" >
+                                <mat-option *ngFor="let adulto of adultos" [value]="adulto.value" >
+                                {{adulto.value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Niños</mat-label>
+                            <mat-select formControlName="nino" >
+                                <mat-option *ngFor="let nino of ninos" [value]="nino.value" >
+                                {{nino.value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </form>
+                    <div class="finalCard">
+                      <button class="whatsapp" [disabled]="producto.form.invalid" mat-raised-button color="primary" (click)="enviarWA(producto.producto, producto.form)"><img src="./../../../../../assets/WhatsApp_Logo_3.png" alt=""></button>
+                      <h2 class="valorNoche"><span>Valor Por Noche: </span> ${{producto.producto.valorPorNoche}}</h2>  
+                    </div>
+                </mat-card-actions>
+            </mat-card-content>
+        </div>
+    </mat-card> 
+</div>
+<div *ngIf="modo==='admin'">
+    <button class="btn-newCard" mat-raised-button color="primary" (click)= "newCard()">NUEVA CARD</button>
+    <mat-card class="example-card" *ngFor="let producto of productos">
+        <div class="card-carousel">
+            <app-carousel [items]="producto.producto.imgs" [database]= "databaseProd" [carpeta]= "carpetaProd" [id]="producto.producto.id" [height]="400"></app-carousel>
+        </div>
+        <div class="card-details">
+            <div class="button-card">
+                <button mat-mini-fab color="primary" (click)="editarCard(producto.producto)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-mini-fab color="primary" (click)="borrarCard(producto.producto)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>   
+            <mat-card-content>    
+                <div class="servicios-card">
+                    <h2>{{producto.producto.nombre}} <span>para {{producto.producto.capacidad}}</span></h2>
+                    <div></div>
+                    <p>Servicios</p>
+                    <mat-list>
+                        <button mat-icon-button color="primary" class="iconosFa" *ngFor="let item of producto.producto.servicios; let i = index">
+                        <mat-icon>{{item}}</mat-icon>
+                        </button>
+                    </mat-list>
+                    <button class="detalles" mat-raised-button color="primary" (click)="verMas(producto.producto)">Detalles</button>
+                </div>
+                <mat-card-actions>
+                    <form [formGroup]="producto.form">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Ingrese el rango de Fechas</mat-label>
+                            <mat-date-range-input formGroupName="range"
+                            [dateFilter]="unavaibleDays"
+                            [rangePicker]="picker">
+                              <input matStartDate formControlName="start" placeholder="F. Ingreso">
+                              <input matEndDate formControlName="end" placeholder="F. Egreso">
+                            </mat-date-range-input>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-date-range-picker #picker></mat-date-range-picker>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Adultos</mat-label>
+                            <mat-select formControlName="adulto" >
+                                <mat-option *ngFor="let adulto of adultos" [value]="adulto.value" >
+                                {{adulto.value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Niños</mat-label>
+                            <mat-select formControlName="nino" >
+                                <mat-option *ngFor="let nino of ninos" [value]="nino.value" >
+                                {{nino.value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </form>
+                    <div class="finalCard">
+                      <button class="whatsapp" [disabled]="producto.form.invalid" mat-raised-button color="primary" (click)="enviarWA(producto.producto, producto.form)"><img src="./../../../../../assets/WhatsApp_Logo_3.png" alt=""></button>
+                      <h2 class="valorNoche"><span>Valor Por Noche: </span> ${{producto.producto.valorPorNoche}}</h2>  
+                    </div>
+                </mat-card-actions>
+            </mat-card-content>
+        </div>
+    </mat-card> 
+</div>
+
+

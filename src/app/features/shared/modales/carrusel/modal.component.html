@@ -1,0 +1,9 @@
+<h1>{{data.message}}</h1>
+<mat-dialog-content>
+    <div *ngIf="data.info; else SubirImg">
+        <app-borrar-img [imgs]="data.info" [database]="data.database" [id]="data.id"></app-borrar-img>
+    </div>
+    <ng-template #SubirImg>
+        <app-subir-img [carpeta]= "data.carpeta" [database]="data.database" [id]="data.id"></app-subir-img>
+    </ng-template>
+</mat-dialog-content>

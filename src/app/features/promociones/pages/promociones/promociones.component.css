@@ -1,0 +1,89 @@
+.normal{
+    padding-top: 6rem !important;
+}
+
+.mat-grid-tile{
+    overflow: visible;
+}
+
+.btn-newCard{
+    display: block;
+    min-width: 25rem;
+    margin: 2rem auto;
+}
+
+button img{
+    height: 35px;
+    width: 45px;
+    border-radius: 50%;
+}
+
+.example-card {
+    width: 95%;
+    height: 600px;
+    display: block;
+    margin: 0 auto;
+}
+
+.normal mat-card-header{
+    display: flex;
+    justify-content:left;
+}
+
+mat-card-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-card{
+    display: flex;
+}
+
+
+.button-card button{
+    margin-left: 1rem;
+}
+
+.button-card button mat-icon{
+    font-size: 1.6rem;
+}
+
+
+.example-header-image {
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/hospedaje-dalmar.appspot.com/o/shared%2FHospedaje%20Dalmar.png?alt=media&token=e8a33332-fc1f-41f4-a877-f876fda6de15');
+    background-size: cover;
+}
+
+.imgProd{
+    height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.mat-card-content{
+    padding-top: 1rem;
+    border-top: solid 2px #006064;
+}
+
+h3{
+    font-size: 1.25rem;
+    text-align: justify;
+    font-weight: bold;
+    color: #006064;
+}
+
+.mat-card-actions{
+    display: flex;
+    justify-content: center;
+}
+
+.whatsapp{
+    width: 60%;
+}
+
+@media (max-width: 768px) {
+    .btn-newCard{
+        min-width: 15rem;
+        margin-bottom: 4rem;
+    }
+}

@@ -1,0 +1,21 @@
+<div class="contenedor-login">
+    <mat-card>
+        <mat-card-content>
+            <div><img src="./../../../../../assets/Hospedaje Dalmar.png" height="100px" width="100px"></div>
+            <h1>LOGIN</h1>
+            <form [formGroup]="form" (ngSubmit)="onLogin()">
+                <mat-form-field class="max-width">
+                    <input matInput formControlName="email" placeholder="Usuario" type="text"
+                    required/>
+                </mat-form-field>
+                <mat-form-field class="max-width">
+                    <input matInput formControlName="password" placeholder="Password" type="password"
+                    required/>
+                </mat-form-field>
+                <button [disabled]="form.invalid" mat-raised-button color="primary">INGRESAR</button>
+                <a (click)="onSeeState()" mat-raised-button color="secondary">Ver cambio</a>
+                <a (click)="onLogout()" mat-raised-button color="secondary">DESLOGUEO</a>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

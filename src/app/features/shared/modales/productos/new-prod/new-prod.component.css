@@ -1,0 +1,18 @@
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1.25rem;
+}
+
+button{
+    display: block;
+    margin: 0 auto;
+    margin-top: 1rem;
+    width: 70%;
+}
+
+mat-form-field{
+    padding-bottom: 1rem;
+}
