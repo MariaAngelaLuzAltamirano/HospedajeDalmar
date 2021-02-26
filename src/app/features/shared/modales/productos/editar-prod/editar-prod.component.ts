@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoadingScreenService } from 'src/app/services/loading-screen.service';
 import { ProductosService } from 'src/app/services/productos.service';
 import Swal from 'sweetalert2';
 
@@ -21,7 +22,7 @@ export class EditarProdComponent implements OnInit {
     servicios: new FormControl('', Validators.required),
   })
 
-  constructor(private service: ProductosService) { }
+  constructor(private service: ProductosService, private services: LoadingScreenService) { }
 
   ngOnInit(): void {
     this.initValuesForm();
@@ -49,15 +50,16 @@ export class EditarProdComponent implements OnInit {
       estado: true,
       imgs: imagenes
     }
-    console.log(obj);
     return obj
   }
 
 
   editCard(){
+    this.services.startLoading();
     this.nuevoObj();
     this.service.updateProd(this.card.id, this.nuevoObj()).then((res) =>{
       if(res){
+        this.services.hideLoading();
         Swal.fire(
           'Editado!',
           'El producto se ha editado exitosamente',

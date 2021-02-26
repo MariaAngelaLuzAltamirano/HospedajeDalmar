@@ -5,9 +5,13 @@ mat-toolbar{
 mat-sidenav{
     background-color: #4DB6AC;
 }
+mat-nav-list a{
+  margin: 2rem 0;
+}
 
 mat-nav-list a, mat-icon{
     color: #F5F5F5 ;
+    font-size: 1.5rem;
 }
 
 mat-sidenav mat-icon{
@@ -51,16 +55,22 @@ mat-sidenav mat-icon{
 }
 
 mat-list{
-  padding-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+.mat-list-item{
+  font-size: 1.5rem;
 }
 
 h1{
   padding-top: 2rem;
   text-align: center;
+  font-size: 2rem;
 }
 
 h3{
   text-align: center;
+  font-size: 1.5rem;
 }
 .btn-list{
   margin-right: 1rem;
@@ -76,5 +86,10 @@ h3{
   .mat-list-base, .mat-list-item, .mat-list-item-content{
     margin-top: 1rem;
   }
+
+  mat-nav-list a{
+    margin: 1rem 0;
+  }
+  
 
 }

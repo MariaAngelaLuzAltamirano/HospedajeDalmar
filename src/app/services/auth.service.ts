@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,18 +16,27 @@ export class AuthService{
         email,
         password
       );
-      console.log('logueada');
-      return result;
+      return {token: result.user.getIdTokenResult(), usuario: result.user.uid};
     }catch(error){
       return error;
     }
   }
 
+  async googleSignin() {
+    const provider = new firebase.default.auth.GoogleAuthProvider();
+    const credential = await this.afAuth.signInWithPopup(provider);
+    return {token: credential.user.getIdTokenResult(), usuario: credential.user.uid};
+  }
+
+  async faceSignin() {
+    const provider = new firebase.default.auth.FacebookAuthProvider();
+    const credential = await this.afAuth.signInWithPopup(provider);
+    return {token: credential.user.getIdTokenResult(), usuario: credential.user.uid};
+  }
+
+
   async logout() {
-    try{
-      await this.afAuth.signOut();
-      console.log("deslogueado")
-    }catch(error){console.log(error)}
+    await this.afAuth.signOut();
   }
 
   obtenerEstadoUsuario = new Observable<boolean>((subscriber)=>{

@@ -1,13 +1,11 @@
 <div *ngIf="modo==='normal'" class="contenedorHome">
     <app-carousel [items]= "carouselData" [database]= "databaseHome" [carpeta]= "carpetaHome"></app-carousel>
     <div class="nono">
-        <mat-card class="card">
-            <img mat-card-image src="./../../../../../assets/nono.jpg" alt="">
+        <mat-card class="card" *ngFor="let home of homeData">
+            <img mat-card-image [src]="home.urlImg" alt="">
             <mat-card-content>
-              <h1>Bienvenidos a Nono y a Hospedaje Dalmar</h1>
-              <h3>
-                <span>Nono</span> es uno de los pueblos más antiguos de Traslasierra (fundado a fines del 1700) y podemos pecar al decir que, es uno de los mas hermosos de la Provincia de Córdoba. Sus paisajes naturales, las calles de un pueblo muy pintoresco, la posibilidad de visitar un museo polifacético...son solo algunas de las cosas que este serrano lugar puede ofrecerte. <span>¡Anímate a descubrilo!</span> 
-              </h3>
+              <h1>{{home.titulo}}</h1>
+              <h3>{{home.descripcion}}<span>{{home.span}}</span></h3>
             </mat-card-content>
         </mat-card>
     </div>
@@ -23,9 +21,7 @@
             </mat-card-header>
             <div class="imgProd" [ngStyle]="{'background-image': 'url(' + producto.imgs[0].urlImg + ')'}">
             </div>
-            <mat-card-content>
-              <button mat-raised-button><span>${{producto.valorPorNoche}}</span> precio por Noche</button>
-            </mat-card-content>
+            <button class="precio" mat-raised-button><span>${{producto.valorPorNoche}}</span> precio por Noche</button>
             <mat-card-actions>
               <a routerLink="/productos">
               <button mat-raised-button color="primary">Ver Mas</button>            
@@ -39,13 +35,18 @@
 <div *ngIf="modo==='admin'">
     <app-carousel [items]= "carouselData" [database]= "databaseHome" [carpeta]= "carpetaHome"></app-carousel>
     <div class="nono">
-      <mat-card class="card">
-          <img mat-card-image src="./../../../../../assets/nono.jpg" height="250px" alt="">
+      <mat-card class="card" *ngFor="let home of homeData">
+          <img mat-card-image [src]="home.urlImg" alt=""> 
           <mat-card-content>
-            <h1>Bienvenidos a Nono</h1>
-            <h3>
-              Nono es uno de los pueblos más antiguos de Traslasierra (fundado a fines del 1700) y podemos pecar al decir que, es uno de los mas hermosos de la Provincia de Córdoba. Sus paisajes naturales, las calles de un pueblo muy pintoresco, la posibilidad de visitar un museo polifacético...son solo algunas de las cosas que este serrano lugar puede ofrecerte. <span>¡Anímate a descubrilo!</span> 
-            </h3>
+            <div class="editCard">
+              <button mat-mini-fab color="primary" (click)="editarCard(home)">
+                <mat-icon>edit</mat-icon>
+              </button>              
+            </div>
+            <mat-card-content>
+              <h1>{{home.titulo}}</h1>
+              <h3>{{home.descripcion}}<span>{{home.span}}</span></h3>
+            </mat-card-content>
           </mat-card-content>
       </mat-card>
   </div>

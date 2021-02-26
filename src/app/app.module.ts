@@ -9,10 +9,11 @@ import { MaterialModule } from './material.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage'
-import { environment} from '../environments/environment';
+import { environment} from '../environments/environment.prod';
 import { ContainerAppComponent } from './container-app/container-app.component';
 import { HammerModule } from '@angular/platform-browser';
 import { OwlModule } from 'ngx-owl-carousel';
+import { SharedModule } from './features/shared/shared.module';
 
 
 
@@ -27,6 +28,7 @@ import { OwlModule } from 'ngx-owl-carousel';
     AppRoutingModule, 
     HttpClientModule,
     LayoutModule,
+    SharedModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
@@ -34,7 +36,6 @@ import { OwlModule } from 'ngx-owl-carousel';
     HammerModule,
     OwlModule
   ],
-  // entryComponents: [ModalComponent],
   providers: [
     { provide: BUCKET, useValue: 'gs://hospedaje-dalmar.appspot.com'}
   ],

@@ -1,16 +1,16 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { Modal4Component } from 'src/app/features/shared/modales/home/modal4.component';
+import { Carousel } from 'src/app/interfaces/carousel';
+import { Home } from 'src/app/interfaces/home';
+import { Producto } from 'src/app/interfaces/productos';
 import { CaruoselService } from 'src/app/services/caruosel.service';
+import { LoadingScreenService } from 'src/app/services/loading-screen.service';
 import { ProductosService } from 'src/app/services/productos.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 declare let $: any;
-
-export interface ICarouselItem {
-  id?: number;
-  urlImge: string;
-  estado: boolean;
-  marginLeft?: number;
-}
 
 @Component({
   selector: 'app-home',
@@ -18,19 +18,21 @@ export interface ICarouselItem {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-  public carouselData: ICarouselItem[];
+  public carouselData: Carousel[];
   public heightHome: number;
   public databaseHome: string = 'imagenesCarrusel';
   public carpetaHome: string = 'ImagenesCarrusel';
-  public productosData: any[];
+  public productosData: Producto[];
   public databaseProd: string = 'productos';
+  public database: string = 'home';
+  public homeData: Home[];
+
   modo: string;
 
-  
-
-  constructor(private rutaAdm: ActivatedRoute, private service: CaruoselService, private serv: ProductosService ) { 
+  constructor(public rutaAdm: ActivatedRoute, public service: CaruoselService, public serv: ProductosService, public services: LoadingScreenService, public dialog: MatDialog,
+    public utils: UtilsService ) { 
+    this.services.startLoading();
     this.modo = 'normal';
-    this.detectarCambioImg();
     this.detectarCambio();
   }
 
@@ -40,6 +42,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     })
     this.carouselData = await this.getImgCarrusel();
     this.productosData = await this.getProductos();
+    this.homeData = await this.getHome();
+    window.scrollTo(0,0);
+    this.services.hideLoading();
   }
 
   async getImgCarrusel(){
@@ -52,29 +57,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
         i = i+1;
       }
     };
-    let arrayFinal = arrayNuevo.filter(this.filtrarPorEstado);
+    let arrayFinal = arrayNuevo.filter(this.utils.filtrarPorEstado);
     return arrayFinal;
   }
-
-
-  filtrarPorEstado(obj) {
-    if(obj.estado == true){
-      return obj;
-    }
-  }
-
-
-  detectarCambioImg(){
-    const refImg = this.service.afDB.database.ref(`${this.databaseHome}`)
-    refImg.on('value', (data) => {
-      if(data){
-        this.getImgCarrusel().then((res) =>{
-          this.carouselData = res;
-        });
-      }
-    });
-  }
-
 
   ngAfterViewInit(){
     setTimeout(()=>{
@@ -99,37 +84,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }, 2000)
   }
 
-  async getProductos(){
+  async getProductos(): Promise<Producto[]>{
     const result = await this.serv.getAll();
     let array= Object.values(result);
-    let arrayNuevo = this.agregarId(array, result);
-    let arrayProd = arrayNuevo.filter(this.filtrarPorEstado);
+    let arrayNuevo = this.utils.agregarId(array, result);
+    let arrayProd = arrayNuevo.filter(this.utils.filtrarPorEstado);
     let arrayFinal = arrayProd.map((e) =>{
       let arrayImg = Object.values(e.imgs);
-      let arrayImgId = this.agregarId(arrayImg, e.imgs);
-      e.imgs = arrayImgId.filter(this.filtrarPorEstado);
-      e.servicios = this.filterResult(e.servicios);
+      let arrayImgId = this.utils.agregarId(arrayImg, e.imgs);
+      e.imgs = arrayImgId.filter(this.utils.filtrarPorEstado);
+      e.servicios = this.utils.filterResult(e.servicios);
       return e;
     });
     return arrayFinal;
-  }
-
-
-
-  filterResult(elements: any[]) {
-   const resultado = elements.filter((element) => element != null);
-   return resultado;
-  }
-
-  agregarId(arrayNuevo, result){
-    let i = 0;  
-    for (let id in result){
-      if(i < arrayNuevo.length){
-        arrayNuevo[i]= ({'id': id, ...arrayNuevo[i]});
-        i = i+1;
-      }
-    };
-    return arrayNuevo;
   }
 
 
@@ -142,6 +109,45 @@ export class HomeComponent implements OnInit, AfterViewInit {
          });
       }
     });
+    const refHome = this.service.afDB.database.ref(`${this.database}`);
+    refHome.on('value', (data) => {
+      if(data){
+        this.getHome().then((res) =>{
+           this.homeData = res;
+         });
+      }
+    });
+    const refImg = this.service.afDB.database.ref(`${this.databaseHome}`)
+    refImg.on('value', (data) => {
+      if(data){
+        this.getImgCarrusel().then((res) =>{
+          this.carouselData = res;
+        });
+      }
+    });
+  }
+
+  editarCard(e){
+    this.openDialog(e);
+  }
+    
+  openDialog(info): void{
+    const dialogRef = this.dialog.open(Modal4Component, {
+      width:"500px",
+      data: {
+        info,
+        message:'Editar Card',
+      }
+    });
+    dialogRef.afterClosed().subscribe(() => {});
+  }
+
+  async getHome(): Promise<Home[]>{
+    const result = await this.service.getImg(this.database);
+    let array= Object.values(result);
+    let arrayNuevo = this.utils.filterResult(array);
+    let arrayHome = this.utils.agregarId(arrayNuevo, result);
+    return arrayHome;
   }
 
 }

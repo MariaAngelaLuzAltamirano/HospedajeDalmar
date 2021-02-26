@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { NavBar, RouterNavBarService } from '../router-nav-bar.service';
+import { NavBar, RouterNavBarService } from '../../../../services/router-nav-bar.service';
 
 @Component({
   selector: 'app-side-nav-list',
@@ -12,7 +12,7 @@ export class SideNavListComponent implements OnInit {
   @Output() public eventoNavBar = new EventEmitter();
   
   constructor(private serv : RouterNavBarService) { 
-    this.navList=this.serv.navBarRutas;
+    this.navList=this.serv.navBarHome;
   }
 
   ngOnInit(): void {

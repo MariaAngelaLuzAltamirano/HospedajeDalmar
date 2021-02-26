@@ -8,14 +8,13 @@
   </mat-list>
 
   <mat-toolbar color="secondary">
-      <div><img src="./../../../../../assets/Hospedaje Dalmar.png" height="100px" width="100px"></div>
+      <div><img src="https://firebasestorage.googleapis.com/v0/b/hospedaje-dalmar.appspot.com/o/shared%2FHospedaje%20Dalmar.png?alt=media&token=e8a33332-fc1f-41f4-a877-f876fda6de15" height="150px" width="150px"></div>
       <span class="example-spacer"></span>
       <div>
         <mat-nav-list>
           <mat-list-item mat-button *ngFor="let list of navList">
-          <a class="botonesNavbar" [routerLink]="list.link">{{list.title}}</a>
-          <!-- <a [routerDirection] ="'root'" class="botonesNavbar" mat-button [routerLink]="/#contacto">CONTACTO</a> -->
-        </mat-list-item>
+            <a class="botonesNavbar" [routerLink]="list.link">{{list.title}}</a>
+          </mat-list-item>
         </mat-nav-list>
       </div>
       <div class="botonMenu">

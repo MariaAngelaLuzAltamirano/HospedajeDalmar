@@ -1,5 +1,6 @@
 <div>
     <form [formGroup]="imgUp" (ngSubmit)="onUpload()">
+        <img [src]="previewUrl">
         <div class="custom-file">
             <label>
                 <mat-icon color="primary">add</mat-icon><span>Elige una Imagen</span>

@@ -1,20 +1,35 @@
-<div *ngIf="modo==='normal'">
-    <div class="contenedor-covid">
+<div *ngIf="modo==='normal'" class="contenedor">
+    <div class="contenedor-covid" *ngFor="let covid of covidData">
         <div>
-            <h1>Procedimiento para Turismo en el contexto de pandemia</h1>
-            <p>El Ministerio de Salud de la Provincia de Córdoba ha actualizado el PROTOCOLO DE PROCEDIMIENTO PARA EL TURISMO EN EL CONTEXTO DE LA PANDEMIA COVID-19. La finalidad del mismo, es dejar clara la manera de proceder frente a casos sospechosos y confirmados de COVID-19 de personas que realicen viajes con fines turísticos en la Provincia de Córdoba. Este protocolo alcanza a todas las personas que estén realizando actividades turísticas dentro de la Provincia y estén en una localidad distinta a su domicilio de residencia.</p>
-            <p>Para más información, acceda en <a href="https://www.nonoturismo.gob.ar/venitranquilo" target="_blank">este link</a> donde encontrará informacion brindada por la Municipalidad de Nono y el Gobierno de la Provincia de Córdoba</p>
+            <h1>{{covid.titulo1}}</h1>
+            <p>{{covid.parrafo1.parte1}}</p>
+            <p>{{covid.parrafo1.parte2}} <a [href]="covid.parrafo1.etiquetaA.href" target="_blank">{{covid.parrafo1.etiquetaA.text}}</a> {{covid.parrafo1.parte3}} </p>
             
-            <h2>Protocolos de Sanidad</h2>
-            <p>Desde Hospedaje Dalmar queremos asegurarnos el cumplimiento de los protocolos establecido, por lo que al ingresar en tu estadia, te pediremos completar este formulario brindado por la Municipalidad de Nono. Entre todos podremos cuidarnos.
-            </p>
+            <h2>{{covid.titulo1}}</h2>
+            <p>{{covid.parrafo2}}</p>
 
         </div>  
-        <img src="./../../../../../assets/Consentimiento de bioseguridad.jpg"> 
+        <img [src]="covid.urlImg"> 
     </div>
-    
 </div>
 <div *ngIf="modo==='admin'">
-    <p>protocolo works ADM!!</p>
+    <div class="contenedor-covid" *ngFor="let covid of covidData">
+        <div>
+            <h1>{{covid.titulo1}}</h1>
+            <p>{{covid.parrafo1.parte1}}</p>
+            <p>{{covid.parrafo1.parte2}} <a [href]="covid.parrafo1.etiquetaA.href" target="_blank">{{covid.parrafo1.etiquetaA.text}}</a> {{covid.parrafo1.parte3}} </p>
+            
+            <h2>{{covid.titulo2}}</h2>
+            <p>{{covid.parrafo2}}</p>
+        </div> 
+        <div>
+            <div class="editCard">
+                <button mat-mini-fab color="primary" (click)="editarCard(covid)">
+                <mat-icon>edit</mat-icon>
+                </button>              
+            </div>
+            <img [src]="covid.urlImg">             
+        </div> 
+    </div>
 </div>
 

@@ -4,6 +4,9 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import Swal from 'sweetalert2';
 import { CaruoselService } from 'src/app/services/caruosel.service';
+import { LoadingScreenService } from 'src/app/services/loading-screen.service';
+import { UtilsService } from 'src/app/services/utils.service';
+import { Carousel } from 'src/app/interfaces/carousel';
 
 @Component({
   selector: 'app-borrar-img',
@@ -21,10 +24,13 @@ export class BorrarImgComponent implements OnInit {
   displayedColumns: string[] = ['imagen','actions'];
   dataSource = new MatTableDataSource();
 
-  constructor(public services : CaruoselService) { }
+  constructor(public services : CaruoselService, private service: LoadingScreenService, public utils: UtilsService) {
+    this.service.startLoading();
+  }
 
   ngOnInit(): void {
     this.dataSource.data = this.imgs;
+    this.service.hideLoading();
   }
 
   
@@ -33,7 +39,7 @@ export class BorrarImgComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  async getImg(){
+  async getImg():Promise<Carousel[]>{
     const result = await this.services.getImg(this.armarUrlDinamicaDatabase());
     let arrayNuevo= Object.values(result);
     let i = 0;  
@@ -43,15 +49,10 @@ export class BorrarImgComponent implements OnInit {
         i = i+1;
       }
     };
-    let arrayFinal = arrayNuevo.filter(this.filtrarPorEstado);
+    let arrayFinal = arrayNuevo.filter(this.utils.filtrarPorEstado);
     return arrayFinal;
   }
 
-  filtrarPorEstado(obj) {
-    if(obj.estado == true){
-      return obj;
-    }
-  }
   armarUrlDinamicaDatabase(){
     if(this.id){
       return `${this.database}/${this.id}/imgs`
@@ -72,15 +73,18 @@ export class BorrarImgComponent implements OnInit {
       confirmButtonText: 'Si'
     }).then((result) => {
       if (result.isConfirmed) {
+        this.service.startLoading();
         this.services.updateImg(id, {urlImg, estado: false},this.armarUrlDinamicaDatabase()).then(() =>{
           this.getImg().then((data) => {        
             this.dataSource.data = data;
+            this.service.hideLoading();
           })
         })
         Swal.fire(
         'Borrado!',
         'La Imagen ha sido eliminada',
         'success')
+
       }
     })
   }

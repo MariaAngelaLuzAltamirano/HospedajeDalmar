@@ -23,10 +23,10 @@ export class ContactsService extends BaseService{
     return this.put(id, obj);
   }
 
-  // deleteMess(id, obj) {
-  //   this.setEndpoint(this.common);
-  //   return this.delete(id, obj);
-  // }
+  deleteMess(id, obj) {
+    this.setEndpoint(this.common);
+    return this.delete(id, obj);
+  }
 
   getCardExample(){
     return this.getCards

@@ -37,31 +37,32 @@ const routes: Routes = [
       },
 
       {
+        path: 'login',
+        loadChildren: accountModule,
+        data: {showHeader: false, showFooter: false},
+      },
+      
+      {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full',
-      }
+      },  
+      
 
     ]
-  },
-  
-  // {
-  //   path: '**',
-  //   redirectTo: 'home',
-  //   pathMatch: 'full',
-  // },  ESTO NO LO PUEDO USAR PORQUE NO SE CARGAN LAS DEMAS RUTAS QUE HAY ABAJO
 
-  {
-    path: 'login',
-    loadChildren: accountModule,
   },
-  
   {
     path: 'admin',
     loadChildren: adminModule,
     canActivate: [AuthGuard],
-  },
+  }, 
 
+  {
+    path: '**',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
 
 ];
 

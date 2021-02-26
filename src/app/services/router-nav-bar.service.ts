@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class RouterNavBarService {
+  
+  navList:NavBar[];
+  fillerNav:NavBar[];
 
   constructor() { 
     this.navList = [
@@ -12,17 +15,25 @@ export class RouterNavBarService {
       {id: 3, title: "PROMOCIONES", link: "promociones", icon: "monetization_on"},
       {id: 4, title: "COVID-19", link: "covid", icon: "coronavirus"},
       {id: 5, title: "LOGIN ADMIN", link: "login", icon: "admin_panel_settings"},
-      //contacts agregar
     ]
+    this.fillerNav = [
+      {id: 1, title: "HOME", link: "home", icon: "home"},
+      {id: 2, title: "HABITACIONES", link: "productos", icon: "hotel"},
+      {id: 3, title: "PROMOCIONES", link: "promociones", icon: "monetization_on"},
+      {id: 4, title: "COVID-19", link: "covid", icon: "coronavirus"},
+      {id: 5, title: "MENSAJES", link: "contactos", icon: "contact_mail"},
+    ]      
 
   }
- 
 
-  get navBarRutas() : NavBar[] {
+  get navBarHome() : NavBar[] {
     return this.navList;
   }
+  get navBarAdmin() : NavBar[] {
+    return this.fillerNav;
+  }
   
-  navList:NavBar[];
+
 }
 
 export interface NavBar{

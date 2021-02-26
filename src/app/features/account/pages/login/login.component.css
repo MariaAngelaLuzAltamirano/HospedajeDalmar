@@ -1,5 +1,5 @@
 .contenedor-login{
-    max-height: 100vh;
+    height: 100%;
     padding: 5rem 1rem;
     background-image: url("https://i.pinimg.com/originals/30/b4/55/30b45544b8488a70ec712ca95d0c6bbb.jpg");
     background-size: cover;
@@ -19,12 +19,13 @@
 }
 
 mat-card{
-    max-width: 25rem;
+    max-width: 30rem;
     margin: 2rem auto;
     text-align: center;
-    height: 26rem;
+    height: auto;
     border-radius: 10%;
     opacity: 0.9;
+    padding-bottom: 2rem;
 }
 
 .max-width{
@@ -34,10 +35,32 @@ mat-card{
 h1{
     color: white;
     background-color: #006064;
+    font-size: 2rem;
 }
 
 button{
     width: 100%;
     margin-top: 1rem;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
 }
+
+mat-icon{
+    margin-right: 0.5rem;
+}
+.face-btn{
+    background-color: #4867AA;
+    color: #F5F5F5;
+}
+
+input{
+    font-size: 1.5rem;
+}
+
+input::placeholder{
+    font-size: 1.5rem;
+}
+
+mat-form-field{
+    font-size: 1.5rem;
+}
+

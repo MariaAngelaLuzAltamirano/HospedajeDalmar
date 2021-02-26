@@ -3,13 +3,12 @@
     width: 100%;
     margin: 0 auto;
     padding: 1rem;
-    background-image: url("./../../../../assets/16841-azul.jpg");
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/hospedaje-dalmar.appspot.com/o/shared%2F16841-azul.jpg?alt=media&token=b146e212-24c6-4902-92ff-3d2b50eb46ce");
     background-size: cover;
 }
 .imagenFooter{
-    width: 300px;
+    width: 17rem;
     margin: auto;
-    padding: 2rem 0;
 }
 
 img{
@@ -26,14 +25,15 @@ span{
 
 form{
   padding: 2rem;
-  min-width: 150px;
-  max-width: 350px;
+  min-width: 8.5rem;
+  max-width: 31rem;
   margin: auto;
 }
 
 button{
     display:block;
     margin: 0 auto;
+    width: 40%;
 }
 .half-width {
     width: 50%;
@@ -47,23 +47,29 @@ mat-form-field{
 }
 
 mat-list{
-    padding-top: 2rem;
-    width: 300px;
+    width: 28rem;
     margin: auto;
 }
 
 a{
     text-decoration: none;
     color: black;
-    display: flex;  
+    display: flex;
+    font-size: 1.5rem;
 }
 mat-list-item div{
  padding-top: 0.25rem;
 }
 
 mat-icon{
-    padding-right: 2rem;
+    padding-right: 3rem;
+    font-size: 2rem;
 }
+
+.item{
+    font-size: 1.5rem;
+}
+
 mat-icon:hover{
     transform : scale(1.25);
     -moz-transform : scale(1.25); /* Firefox */
@@ -71,6 +77,10 @@ mat-icon:hover{
     -o-transform : scale(1.25); /* Opera */
     -ms-transform : scale(1.25); /* IE9 */
     
+}
+
+.mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+    height: 5rem;
 }
 
 #ubication:hover{
@@ -94,14 +104,25 @@ h4{
     margin: 0;
 }
 p{
-    max-width: 250px;
-    font-size: 1rem;
+    max-width: 19.5rem;
+    font-size: 1.5rem;
     text-align: center;
     font-weight: bold;
     margin: auto;
-    padding-top: 1rem;
+    padding-top: 2rem;
+    line-height : 2rem;
+}
+span{
+    font-size: 1.5rem;
 }
 
+mat-label{
+    font-size: 1.5rem;
+}
+
+input{
+    font-size: 1.5rem;
+}
 
 @media (min-width: 768px) {
     .container{

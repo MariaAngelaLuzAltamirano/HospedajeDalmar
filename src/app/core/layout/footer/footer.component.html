@@ -1,17 +1,17 @@
 <div class="container">
     <div class="imagenFooter">
-        <img src="./../../../../../assets/Hospedaje Dalmar.png" height="250px" width="250px">
-        <p>A una 1hs 30m de Córdoba Capital <br> te invitamos a conocer uno de los pasaijes mas hermosos de las Sierras Cordobesas.</p>
+        <img src="https://firebasestorage.googleapis.com/v0/b/hospedaje-dalmar.appspot.com/o/shared%2FHospedaje%20Dalmar.png?alt=media&token=e8a33332-fc1f-41f4-a877-f876fda6de15" height="250px" width="250px">
+        <p>A una 1hs 30m de Córdoba Capital: te invitamos a conocer uno de los pasaijes mas hermosos de las Sierras Cordobesas.</p>
     </div>
     
     <form [formGroup]="form" #noteForm="ngForm" (ngSubmit)="onMessage()">
         <h4>Contacto</h4>
-        <mat-form-field class="half-width">
+        <mat-form-field class="full-width">
             <mat-label>Nombre</mat-label>
             <input matInput formControlName="nombre" placeholder="Hola que tal!!" type="text" required>
         </mat-form-field>
 
-        <mat-form-field class="half-width">
+        <mat-form-field class="full-width">
             <mat-label>Apellido</mat-label>
             <input matInput formControlName="apellido" placeholder="Hola que tal!!" type="text" required>
         </mat-form-field>
@@ -35,8 +35,8 @@
     </form>
     <mat-list>
         <mat-list-item><a href="https://goo.gl/maps/S764i7bJf84bAnYT8" target="_blank"><mat-icon color="primary" id="ubication">room</mat-icon><div>Vicente Castro, Nono, Argentina</div></a></mat-list-item>
-        <mat-list-item><mat-icon id="call" color="primary">call</mat-icon>+54 (3544) 556688</mat-list-item>
-        <mat-list-item><mat-icon id="email" color="primary">email</mat-icon>marian_1490_1@hotmail.com</mat-list-item>
+        <mat-list-item class="item"><mat-icon id="call" color="primary">call</mat-icon>+54 (3544) 556688</mat-list-item>
+        <mat-list-item class="item"><mat-icon id="email" color="primary">email</mat-icon>marian_1490_1@hotmail.com</mat-list-item>
         <mat-list-item><a  href="http://facebook.com/HospedajeDalmar" target="_blank"><mat-icon id="facebook" color="primary">facebook</mat-icon><div>HospedajeDalmar</div></a></mat-list-item>
     </mat-list>
 

@@ -2,20 +2,20 @@
     padding: 7rem 0 1rem 0;
 }
 .example-card {
-    max-width: 500px;
+    max-width: 28rem;
     margin: 0 auto;
     margin-bottom: 2rem;
 }
 h2, p{
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-align: center;
     margin-bottom: 0.5rem;
 }
 
 h2{
-    padding-top: 2rem;
+    padding-top: 1.75rem;
     font-weight: bold;
-    font-size: 1.75rem;
+    font-size: 2.5rem;
 }
 
 .servicios-card p {
@@ -32,30 +32,41 @@ h2{
 mat-list{
     display: flex;
     justify-content: space-between;
+    margin-top: 1rem;
 }
 mat-icon{
-    font-size: 40px;
-    width: 40px;
+    font-size: 2.5rem;
+    width: 2.5rem;
 }
 mat-icon-button{
     line-height: 0;
 }
 fa-icon{
-    font-size: 30px;
+    font-size: 1.7rem;
 }
 .detalles{
     width: 100%;
     margin-top: 1rem;
+    font-size: 1.5rem;
 }
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .btn-newCard{
     display: block;
     min-width: 15rem;
     margin: 2rem auto;
+    font-size: 1.5rem;
 }
 
 .mat-form-field{
     padding: 1rem 0 0 1rem;
-    width: 150px;
+    width: 80%;
+    font-size: 1.5rem;
 }
 
 .whatsapp{
@@ -64,8 +75,8 @@ fa-icon{
 }
 
 button img{
-    height: 35px;
-    width: 45px;
+    height: 3rem;
+    width: 3.6rem;
     border-radius: 50%;
 }
 
@@ -75,7 +86,7 @@ button img{
 }
 
 span{
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: lighter;
 }
 
@@ -97,21 +108,20 @@ span{
 
 @media (min-width: 768px) {
     .contenedor{
-        padding: 7rem 3rem 1rem 3rem;
+        padding: 8rem 3rem 1rem 3rem;
     }
     .example-card{
-        max-height: 500px;
         min-width: 100%;
         display: flex;
         margin: 2rem 0;
         justify-content: space-around;
         align-items: center;
-        padding: 2rem;
+        padding: 0 2rem 2rem 2rem;
         border: 1px solid #B8DEDA;
     }
 
     .card-carousel{
-        width: 500px;
+        width: 34rem;
     }
 
     .card-details{
@@ -139,7 +149,7 @@ span{
     }
     form{
         width: 90%;
-        display: flex;
+        flex-direction: row;
         justify-content: center;
     }
 
@@ -200,6 +210,8 @@ span{
     .button-card{
         justify-content: flex-end;
         padding-top: 0;
+        margin-bottom: -4rem;
+        margin-top: 2rem;
     }
 
 }

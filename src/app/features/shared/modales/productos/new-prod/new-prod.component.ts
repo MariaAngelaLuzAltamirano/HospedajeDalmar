@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoadingScreenService } from 'src/app/services/loading-screen.service';
 import { ProductosService } from 'src/app/services/productos.service';
 import Swal from 'sweetalert2';
 
@@ -18,12 +19,13 @@ export class NewProdComponent implements OnInit {
     servicios: new FormControl('', Validators.required),
   })
 
-  constructor(private service: ProductosService) { }
+  constructor(private service: ProductosService, private services: LoadingScreenService) { }
 
   ngOnInit(): void {
   }
 
   onUpload(){
+    this.services.startLoading();
     const objPost = {
       ...this.CardUp.value,
       imgs: {
@@ -36,6 +38,7 @@ export class NewProdComponent implements OnInit {
     };
     this.service.postProd(objPost).then((data) =>{
       if(data){
+        this.services.hideLoading();
         Swal.fire(
         'Agregado!',
         'El producto se ha subido exitosamente',

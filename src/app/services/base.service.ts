@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from './../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Injectable({
@@ -10,7 +12,8 @@ import { AngularFireDatabase } from '@angular/fire/database';
 export class BaseService {
   urlServer : string = environment.firebaseConfig.databaseURL;
   endopoint : string = '';
-  constructor(public http: HttpClient, public afDB: AngularFireDatabase,) {}
+  token: string = localStorage.getItem('token');
+  constructor(public http: HttpClient, public afDB: AngularFireDatabase, public router: Router) {}
 
   getCards(){
     return this.afDB.database.ref();
@@ -20,18 +23,19 @@ export class BaseService {
     this.endopoint = endopoint;
     return this.endopoint;
   }
+
   handlerError({status}){
     if(status === 401){
-      //redirigir a login y limpiar el storage
-      //debo importar Route
-      //this.router.navigate(['/login']);
+      Swal.fire(
+      'Sin Autorizacion!',
+      'Usted necesita loguearse para realizar esta operación',
+      'success');
   
     }else if(status === 404){
-      //not found
-      //this.router.navigate(['/notfound']);
+      window.open(`https://http.cat/404`, "_blank");
     }
     else if(status === 500){
-      //internal server error
+      window.open(`https://http.cat/500`, "_blank");
     }
   }
 
@@ -40,34 +44,30 @@ export class BaseService {
      return await this.http.get(`${this.urlServer}/${this.endopoint}.json`).toPromise();
     }catch(e){
       this.handlerError(e);
-      console.log(e)
     }
   }
   async post(body) {
     try{ 
-     return await this.http.post(`${this.urlServer}/${this.endopoint}.json`, body).toPromise();
+     return await this.http.post(`${this.urlServer}/${this.endopoint}.json?auth=${this.token}`, body).toPromise();
     }catch(e){
       this.handlerError(e);
-      console.log(e)
     }
   }
 
   async put(id, obj) {
     try{ 
-     return await this.http.put(`${this.urlServer}/${this.endopoint}/${id}.json`,obj).toPromise();
+     return await this.http.put(`${this.urlServer}/${this.endopoint}/${id}.json?auth=${this.token}`,obj).toPromise();
     }catch(e){
       this.handlerError(e);
-      console.log(e)
     }
   }
 
 
   async delete(id, obj) {
     try{ 
-     return await this.http.put(`${this.urlServer}/${this.endopoint}/${id}.json`,obj).toPromise();
+     return await this.http.put(`${this.urlServer}/${this.endopoint}/${id}.json?auth=${this.token}`,obj).toPromise();
     }catch(e){
       this.handlerError(e);
-      console.log(e)
     }
   }
 

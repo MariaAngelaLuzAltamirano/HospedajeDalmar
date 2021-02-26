@@ -1,54 +1,50 @@
 <div *ngIf="modo==='normal'" class="normal">
-    <mat-grid-list [cols]="breakpoint" rowHeight="1:1.5" (window:resize)="onResize($event)">     
-        <mat-grid-tile *ngFor="let promocion of promocionesData">
-            <mat-card class="example-card">
-                <mat-card-header>
-                  <div mat-card-avatar class="example-header-image"></div>
-                  <mat-card-title>{{promocion.nombre}}</mat-card-title>
-                  <mat-card-subtitle>{{promocion.capacidad}}</mat-card-subtitle>
-                </mat-card-header>
-                <div class="imgProd" [ngStyle]="{'background-image': 'url(' + promocion.imagen + ')'}">
-                </div>
-                <p>Tarifas con cupos limitados, hasta agotar stock. Solo con reserva previa.</p>
-                <mat-card-content>
-                  <h3>{{promocion.descripcion}}</h3>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button class="whatsapp" mat-raised-button color="primary"  (click)="enviarWA(promocion)"><img src="./../../../../../assets/WhatsApp_Logo_3.png" alt=""></button>
-                </mat-card-actions>
-              </mat-card>
-        </mat-grid-tile>
-    </mat-grid-list>
+    <div class="promociones">
+    <mat-card class="example-card" *ngFor="let promocion of promocionesData">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{promocion.nombre}}</mat-card-title>
+          <mat-card-subtitle>{{promocion.capacidad}}</mat-card-subtitle>
+        </mat-card-header>
+        <div class="imgProd" [ngStyle]="{'background-image': 'url(' + promocion.imagen + ')'}">
+        </div>
+        <p>Tarifas con cupos limitados, hasta agotar stock. Solo con reserva previa.</p>
+        <mat-card-content>
+          <h3>{{promocion.descripcion}}</h3>
+        </mat-card-content>
+        <mat-card-actions>
+            <button class="whatsapp" mat-raised-button color="primary"  (click)="enviarWA(promocion)"><img src="https://firebasestorage.googleapis.com/v0/b/hospedaje-dalmar.appspot.com/o/shared%2FWhatsApp_Logo_3.png?alt=media&token=50a7c8e4-0ed7-4fee-8778-c2a76ae60baf" alt=""></button>
+        </mat-card-actions>
+    </mat-card>
+    </div>
 </div>
 <div *ngIf="modo==='admin'">
-        <button class="btn-newCard" mat-raised-button color="primary" (click)="newCard()">NUEVA CARD</button>      
-        <mat-grid-list [cols]="breakpoint" rowHeight="1:1.5" (window:resize)="onResize($event)">
-            <mat-grid-tile *ngFor="let promocion of promocionesData">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                      <div mat-card-avatar class="example-header-image"></div>
-                      <mat-card-title>{{promocion.nombre}}</mat-card-title>
-                      <mat-card-subtitle>{{promocion.capacidad}}</mat-card-subtitle>
-                      <div class="button-card">
-                            <button mat-mini-fab color="primary" (click)="editarCard(promocion)">
-                                <mat-icon>edit</mat-icon>
-                            </button>
-                            <button mat-mini-fab color="primary" (click)="borrarCard(promocion)">
-                                <mat-icon>delete</mat-icon>
-                            </button>
-                        </div>   
-                    </mat-card-header>
-                    <div class="imgProd" [ngStyle]="{'background-image': 'url(' + promocion.imagen + ')'}">
-                    </div>
-                    <p>Tarifas con cupos limitados, hasta agotar stock. Solo con reserva previa.</p>
-                    <mat-card-content>
-                      <h3>{{promocion.descripcion}}</h3>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button class="whatsapp" mat-raised-button color="primary" (click)="enviarWA(promocion)"><img src="./../../../../../assets/WhatsApp_Logo_3.png" alt=""></button>
-                    </mat-card-actions>
-                  </mat-card>
-            </mat-grid-tile>
-        </mat-grid-list>
+    <button class="btn-newCard" mat-raised-button color="primary" (click)="newCard()">NUEVA CARD</button>      
+    <div class="promociones">
+        <mat-card class="example-card" *ngFor="let promocion of promocionesData">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{promocion.nombre}}</mat-card-title>
+                <mat-card-subtitle>{{promocion.capacidad}}</mat-card-subtitle>
+                <div class="button-card">
+                    <button mat-mini-fab color="primary" (click)="editarCard(promocion)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-mini-fab color="primary" (click)="borrarCard(promocion)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>   
+            </mat-card-header>
+            <div class="imgProd" [ngStyle]="{'background-image': 'url(' + promocion.imagen + ')'}">
+            </div>
+            <p>Tarifas con cupos limitados, hasta agotar stock. Solo con reserva previa.</p>
+            <mat-card-content>
+                <h3>{{promocion.descripcion}}</h3>
+            </mat-card-content>
+            <mat-card-actions>
+                <button class="whatsapp" mat-raised-button color="primary" (click)="enviarWA(promocion)"><img src="https://firebasestorage.googleapis.com/v0/b/hospedaje-dalmar.appspot.com/o/shared%2FWhatsApp_Logo_3.png?alt=media&token=50a7c8e4-0ed7-4fee-8778-c2a76ae60baf" alt=""></button>
+            </mat-card-actions>
+        </mat-card>  
+    </div>
 </div>
 

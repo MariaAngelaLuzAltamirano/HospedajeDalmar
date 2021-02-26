@@ -6,7 +6,6 @@ import { SideNavListComponent} from './header/side-nav-list/side-nav-list.compon
 import { MaterialModule } from './../../material.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { CarouselComponent } from './../../features/carousel/carousel.component';
 
 
 @NgModule({

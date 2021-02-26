@@ -5,19 +5,22 @@ table {
 }
 mat-form-field{
     padding: 0 1rem;    
-    font-size: 1.5rem;
+    font-size: 2rem;
     width: 100%;
 }
+
 th{
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 td{
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 mat-paginator{
     margin: 1rem 2rem 1rem 1rem;
+    font-size: 1.5rem;
 }
+
 button{
     margin-left: 0.5rem;
 }

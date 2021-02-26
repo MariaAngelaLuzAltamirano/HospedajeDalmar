@@ -1,7 +1,7 @@
 <div class="contenedor-login">
     <mat-card>
         <mat-card-content>
-            <div><img src="./../../../../../assets/Hospedaje Dalmar.png" height="100px" width="100px"></div>
+            <div><img src="https://firebasestorage.googleapis.com/v0/b/hospedaje-dalmar.appspot.com/o/shared%2FHospedaje%20Dalmar.png?alt=media&token=e8a33332-fc1f-41f4-a877-f876fda6de15" height="100px" width="100px"></div>
             <h1>LOGIN</h1>
             <form [formGroup]="form" (ngSubmit)="onLogin()">
                 <mat-form-field class="max-width">
@@ -13,8 +13,8 @@
                     required/>
                 </mat-form-field>
                 <button [disabled]="form.invalid" mat-raised-button color="primary">INGRESAR</button>
-                <a (click)="onSeeState()" mat-raised-button color="secondary">Ver cambio</a>
-                <a (click)="onLogout()" mat-raised-button color="secondary">DESLOGUEO</a>
+                <button mat-raised-button color="warn" type="button" (click)="onGoogle()"><mat-icon>mail</mat-icon>Google</button>
+                <button class="face-btn" mat-raised-button type="button" (click)="onFacebook()"><mat-icon>facebook</mat-icon>Facebook</button>
             </form>
         </mat-card-content>
     </mat-card>

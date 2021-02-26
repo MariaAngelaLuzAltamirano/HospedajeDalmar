@@ -4,6 +4,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { MaterialModule } from './../../material.module';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +15,9 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     HomeRoutingModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [HomeComponent],
 })

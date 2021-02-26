@@ -16,7 +16,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import {MatSelectModule} from '@angular/material/select';
-import {MatGridListModule} from '@angular/material/grid-list';
 
 
 
@@ -40,7 +39,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
         MatDatepickerModule,
         MatMomentDateModule,
         MatSelectModule,
-        MatGridListModule
     ],
     exports: [
         MatToolbarModule,
@@ -59,7 +57,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
         MatDialogModule,
         MatDatepickerModule,
         MatSelectModule,
-        MatGridListModule
     ]
 })
 

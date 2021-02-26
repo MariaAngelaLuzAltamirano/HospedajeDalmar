@@ -1,0 +1,50 @@
+h1{
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1.25rem;
+}
+
+button{
+    display: block;
+    margin: 0 auto;
+    margin-top: 1rem;
+    width: 70%;
+}
+
+mat-form-field{
+    padding-bottom: 1rem;
+}
+
+.custom-file{
+    border: 1px solid #ccc;
+    display: inline-block;
+    width: 100%;
+}
+.custom-file input{
+    visibility:hidden;
+    width: 5.5rem;
+}
+
+label{
+    display: flex;
+    cursor:pointer;
+}
+span{
+    padding-top: 0.25rem;
+}
+mat-icon{
+    margin: 0 6rem 0 1rem;
+}
+
+img{
+    width: 400px;
+    height: auto;
+    margin-bottom: 1rem;
+}

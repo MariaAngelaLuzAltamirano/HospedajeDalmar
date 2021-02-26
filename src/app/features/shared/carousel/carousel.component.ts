@@ -2,18 +2,10 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modales/carrusel/modal.component';
+import { LoadingScreenService } from 'src/app/services/loading-screen.service';
+import { Carousel } from 'src/app/interfaces/carousel';
 
 
-
-
-
-export interface ICarouselItem {
-  id: string;
-  posicion?: number;
-  urlImge: string;
-  estado: boolean;
-  marginLeft?: number;
-}
 
 @Component({
   selector: 'app-carousel',
@@ -28,7 +20,7 @@ export class CarouselComponent implements OnInit,  OnChanges{
    * Custom Properties
    */
   @Input() height : number;
-  @Input() items: ICarouselItem[];
+  @Input() items: Carousel[];
   @Input() database: string;
   @Input() carpeta: string;
   @Input() id?: string;
@@ -39,7 +31,8 @@ export class CarouselComponent implements OnInit,  OnChanges{
   public finalHeight: string | number = 0;
   public currentPosition = 0;
 
-  constructor(private rutaAdm: ActivatedRoute, public dialog: MatDialog) { 
+  constructor(private rutaAdm: ActivatedRoute, public dialog: MatDialog, private services: LoadingScreenService) {
+    this.services.startLoading(); 
     this.modo = this.modo || 'normal';
     this.items= [];
   }
@@ -52,7 +45,8 @@ export class CarouselComponent implements OnInit,  OnChanges{
     this.mapeoItems();
     const timer = window.setInterval(()=>{
       this.setNext();
-    }, 5000);
+    }, 7000);
+    this.services.hideLoading();
   }
 
   mapeoItems(){
@@ -117,7 +111,12 @@ export class CarouselComponent implements OnInit,  OnChanges{
         message: info? 'Eliminar Imagen' : 'Nueva Imagen',
       },
     });
-    dialogRef.afterClosed().subscribe(() => {});
+    dialogRef.afterClosed().subscribe(() => {
+      this.services.startLoading();
+      setTimeout(() =>{
+        this.services.hideLoading();
+      }, 1000)
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {

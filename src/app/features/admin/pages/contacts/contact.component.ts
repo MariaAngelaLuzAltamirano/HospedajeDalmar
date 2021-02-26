@@ -4,17 +4,9 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import Swal from 'sweetalert2';
-
-export interface Messages {
-  id: string;
-  nombre: string;
-  apellido: string;
-  celular: number;
-  email: string;
-  mensaje: string;
-  leido: boolean;
-}
-//preguntar al berto como implementarlo
+import { LoadingScreenService } from 'src/app/services/loading-screen.service';
+import { UtilsService } from 'src/app/services/utils.service';
+import { Messages } from 'src/app/interfaces/messages';
 
 
 @Component({
@@ -33,10 +25,13 @@ export class ContactComponent implements OnInit {
   dataSource = new MatTableDataSource();
 
   
-  constructor(private service: ContactsService) { }
+  constructor(public service: ContactsService, public services: LoadingScreenService, public utils: UtilsService) {
+    this.services.startLoading();
+   }
 
   async ngOnInit() {
     this.dataSource.data = await this.getMessages(); 
+    this.services.hideLoading();
   }
 
   ngAfterViewInit() {
@@ -48,7 +43,7 @@ export class ContactComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  async getMessages(){
+  async getMessages(): Promise<Messages[]>{
     const result = await this.service.getMess();
     let arrayNuevo= Object.values(result);
     let i = 0;  
@@ -58,14 +53,8 @@ export class ContactComponent implements OnInit {
         i = i+1;
       }
     };
-    let arrayFinal = arrayNuevo.filter(this.filtrarPorEstado);
+    let arrayFinal = arrayNuevo.filter(this.utils.filtrarPorEstado);
     return arrayFinal;
-  }
-
-  filtrarPorEstado(obj) {
-    if(obj.estado == true){
-      return obj;
-    }
   }
 
   onDeleteMessage({nombre, apellido, celular, email, mensaje, leido, id}){
@@ -79,7 +68,7 @@ export class ContactComponent implements OnInit {
       confirmButtonText: 'Si'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.service.updateMess(id, {nombre, apellido, celular, email, mensaje, leido, estado: false}).then(() =>{
+        this.service.deleteMess(id, {nombre, apellido, celular, email, mensaje, leido, estado: false}).then(() =>{
           this.getMessages().then((data) => {
             this.dataSource.data = data;
           })
@@ -110,7 +99,6 @@ export class ContactComponent implements OnInit {
       if (result.isConfirmed) {
         this.service.updateMess(id, {nombre, apellido, celular, email, mensaje, estado, leido: true}).then(() =>{
           this.getMessages().then((data) => {
-            console.log(data);
             this.dataSource.data = data;
           })
         })

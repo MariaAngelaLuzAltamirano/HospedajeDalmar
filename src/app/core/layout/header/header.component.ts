@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { NavBar, RouterNavBarService } from './router-nav-bar.service';
+import { NavBar, RouterNavBarService } from '../../../services/router-nav-bar.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +8,10 @@ import { NavBar, RouterNavBarService } from './router-nav-bar.service';
 })
 export class HeaderComponent implements OnInit {
   @Output() public eventoNav = new EventEmitter();
-
+  navList:NavBar[];
+  
   constructor(private serv : RouterNavBarService) { 
-    this.navList=this.serv.navBarRutas;
+    this.navList=this.serv.navBarHome;
   }
 
   ngOnInit(): void {
@@ -19,5 +20,5 @@ export class HeaderComponent implements OnInit {
   funcionToggle(){
     this.eventoNav.emit();
   }
-  navList:NavBar[];
+
 }

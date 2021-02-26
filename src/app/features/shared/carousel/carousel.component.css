@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    margin-top: 3rem;
 }
 .dsc-carousel::before {
     content: '';
@@ -32,7 +33,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    transition: 0.5s all ease;
+    transition: 1s all ease;
 }
 
 .dsc-carousel__btns {

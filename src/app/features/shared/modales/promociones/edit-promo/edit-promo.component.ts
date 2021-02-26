@@ -3,6 +3,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { LoadingScreenService } from 'src/app/services/loading-screen.service';
 import { PromocionesService } from 'src/app/services/promociones.service';
 import Swal from 'sweetalert2';
 
@@ -18,7 +19,9 @@ export class EditPromoComponent implements OnInit {
   filePath: any;
   dowloadURL: Observable<string>;
   estado : boolean;
-  urlImg : string;  
+  urlImg : string;
+  selectFile: File;
+  previewUrl: any;
   
   private img:any;
 
@@ -29,16 +32,17 @@ export class EditPromoComponent implements OnInit {
     imagen: new FormControl('', Validators.required),
   })
 
-  constructor(private services: PromocionesService, public storage: AngularFireStorage) { }
+  constructor(private services: PromocionesService, public storage: AngularFireStorage, private service: LoadingScreenService) { }
 
   ngOnInit(): void {
     this.initValuesForm();
   }
 
   editCard(){
+    this.service.startLoading();
     if(this.img){
       this.uploadImg(this.img, this.carpeta);
-
+      this.service.hideLoading();
     }else{
       const objPost = {
         nombre: this.CardEdit.value.nombre,
@@ -49,6 +53,7 @@ export class EditPromoComponent implements OnInit {
       };
       this.services.updatePromo( this.card.id,objPost).then((data) =>{
         if(data){
+          this.service.hideLoading();
           Swal.fire(
           'Agregado!',
           'La promoción se ha actualizada exitosamente',
@@ -85,6 +90,17 @@ export class EditPromoComponent implements OnInit {
   }
 
   handleImage(e:any):void{
+    const reader = new FileReader();
+    const {files} = e.target;
+    if( files && files.length){
+      this.selectFile = files[0];
+      console.log(this.selectFile);
+      reader.onload = (e) => {
+        this.previewUrl = reader.result;
+        console.log(this.previewUrl);
+      };
+      reader.readAsDataURL(this.selectFile);
+    }
     this.img = e.target.files[0];
   }
 

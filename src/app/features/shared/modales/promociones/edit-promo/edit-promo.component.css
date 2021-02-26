@@ -24,7 +24,7 @@ mat-form-field{
 }
 .custom-file input{
     visibility:hidden;
-    width: 100px;
+    width: 5.5rem;
 }
 
 label{
@@ -36,4 +36,10 @@ span{
 }
 mat-icon{
     margin: 0 6rem 0 1rem;
+}
+
+img{
+    width: 400px;
+    height: auto;
+    margin-bottom: 1rem;
 }

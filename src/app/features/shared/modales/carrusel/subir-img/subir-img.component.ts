@@ -14,6 +14,9 @@ export class SubirImgComponent implements OnInit {
   @Input() id?: string;
 
   private img:any;
+  private selectFile: File;
+  public previewUrl: any;
+
 
   public imgUp = new FormGroup({
     imagen:  new FormControl('', Validators.required),
@@ -21,6 +24,7 @@ export class SubirImgComponent implements OnInit {
   constructor(public services : CaruoselService) { }
 
   ngOnInit(): void {
+
   }
 
   armarUrlDinamicaDatabase(){
@@ -43,7 +47,16 @@ export class SubirImgComponent implements OnInit {
     this.services.uploadImg(this.img,this.armarUrlDinamicaStorage(), this.armarUrlDinamicaDatabase());
   }
 
-  handleImage(e:any):void{
+  handleImage(e:any){
+    const reader = new FileReader();
+    const {files} = e.target;
+    if( files && files.length){
+      this.selectFile = files[0];
+      reader.onload = (e) => {
+        this.previewUrl = reader.result;
+      };
+      reader.readAsDataURL(this.selectFile);
+    }
     this.img = e.target.files[0];
   }
 

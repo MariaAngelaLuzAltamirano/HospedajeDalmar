@@ -1,0 +1,48 @@
+<h1>{{data.message}}</h1>
+<mat-dialog-content >
+    <div>
+        <form [formGroup]="CardEdit" (ngSubmit)="editCard()">
+            <mat-form-field>
+                <mat-label>Titulo 1</mat-label>
+                <input matInput placeholder="titulo 1 Seccion" formControlName="titulo1">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Titulo 2</mat-label>
+                <input matInput placeholder="titulo 2 Seccion" formControlName="titulo2">
+            </mat-form-field>
+           <mat-form-field>
+                <mat-label>Parrafo 1: Parte1</mat-label>
+                <textarea matInput formControlName="parrafoA1" placeholder="parrafo 1: Parte1" type="text" required></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Parrafo 1: Parte2</mat-label>
+                <textarea matInput formControlName="parrafoA2" placeholder="parrafo 1: Parte2" type="text" required></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Parrafo 1: Parte3</mat-label>
+                <textarea matInput formControlName="parrafoA3" placeholder="parrafo 1: Parte3" type="text" required></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Parrafo 2</mat-label> 
+                <textarea matInput formControlName="parrafoB" placeholder="parrafo 2" type="text" required></textarea>
+            </mat-form-field>
+                        
+            <mat-form-field>
+                <mat-label>Hipervinculo: url</mat-label>
+                <input matInput placeholder="hipervinculo: url" formControlName="aHref">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Hipervinculo: texto</mat-label>
+                <input matInput placeholder="hipervinculo: texto" formControlName="aText">
+            </mat-form-field>
+            <img [src]="previewUrl">
+            <div class="custom-file">
+                <label>
+                    <mat-icon color="primary">add</mat-icon><span>Elige una Imagen</span>
+                    <input type="file" accept="image/*" formControlName="imagen" (change)= "handleImage($event)" >
+                </label>
+            </div>
+            <button [disabled]="CardEdit.invalid" mat-raised-button color="primary" type="submit" [mat-dialog-close]="true">Enviar</button>
+        </form>
+    </div>
+</mat-dialog-content>

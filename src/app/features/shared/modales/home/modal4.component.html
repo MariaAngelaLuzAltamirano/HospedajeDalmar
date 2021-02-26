@@ -1,0 +1,27 @@
+<h1>{{data.message}}</h1>
+<mat-dialog-content >
+    <div>
+        <form [formGroup]="CardEdit" (ngSubmit)="editCard()">
+            <mat-form-field>
+                <mat-label>Titulo</mat-label>
+                <input matInput placeholder="titulo Seccion" formControlName="titulo">
+            </mat-form-field>
+           <mat-form-field>
+                <mat-label>Descripción</mat-label>
+                <textarea matInput formControlName="descripcion" placeholder="Bienvenida..." type="text" required></textarea>
+            </mat-form-field>         
+            <mat-form-field>
+                <mat-label>Span</mat-label>
+                <input matInput placeholder="span" formControlName="span">
+            </mat-form-field>
+            <img [src]="previewUrl">
+            <div class="custom-file">
+                <label>
+                    <mat-icon color="primary">add</mat-icon><span>Elige una Imagen</span>
+                    <input type="file" accept="image/*" formControlName="imagen" (change)= "handleImage($event)" >
+                </label>
+            </div>
+            <button [disabled]="CardEdit.invalid" mat-raised-button color="primary" type="submit" [mat-dialog-close]="true">Enviar</button>
+        </form>
+    </div>
+</mat-dialog-content>

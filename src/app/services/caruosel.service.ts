@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { BaseService } from './base.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { LoadingScreenService } from './loading-screen.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +18,8 @@ export class CaruoselService extends BaseService {
   estado : boolean;
   urlImg : string;
 
-  constructor(public storage: AngularFireStorage, public http: HttpClient, public afDB: AngularFireDatabase) {
-    super(http,afDB);
+  constructor(public storage: AngularFireStorage, public http: HttpClient, public afDB: AngularFireDatabase, public router: Router) {
+    super(http,afDB,router);
   }
   private saveImg(url, database){
     const objetoImg = {
@@ -33,8 +35,6 @@ export class CaruoselService extends BaseService {
         showConfirmButton: false,
         timer: 1500
       })
-    }).catch( (e) =>{
-      console.log(e);
     })
   }
 

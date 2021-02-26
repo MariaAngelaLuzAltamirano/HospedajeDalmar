@@ -11,12 +11,12 @@ img{
 
 .botonesNavbar{
     padding-right: 2rem;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight:bolder;
 }
 
 .navFooter{
-    height: 2rem;
+    height: 4rem;
     background-color: #006064;
 }
 
@@ -39,14 +39,15 @@ mat-list, mat-nav-list{
 
 
 @media (min-width: 768px) {
-   
     .navFooter{
         display: none;
     }
+   
     mat-list{
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        height: 5rem;
         padding-right: 1rem;
         background-color: #006064;
     }
@@ -57,6 +58,7 @@ mat-list, mat-nav-list{
     }
     
     mat-list div{
+        font-size: 1.25rem;
         color: #F5F5F5 !important;
         padding-right: 2rem;
     }
