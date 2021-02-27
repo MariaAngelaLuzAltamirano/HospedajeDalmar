@@ -6,6 +6,9 @@
     padding: 4rem 2rem;
     display: flex;
 }
+.contenido{
+    display: flex;
+}
 
 img{
     max-height: 40rem;
@@ -31,17 +34,27 @@ a{
     font-weight: bold;
 }
 .editCard{
-    display: flex;
-    justify-content: flex-start;
-    padding-bottom: 2rem;
+    padding-right: 1rem;
+    margin-top: -2rem;
 }
 
 @media (max-width: 768px) {
     
     .contenedor-covid{
         flex-direction: column;
-        padding: 0;
-        padding-bottom: 1rem;
+        padding: 1rem 0;
+    }
+    .contenido{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .editCard{
+        display: flex;
+        justify-content: center;
+        padding-right: 0;
+        margin-top: 0;
+        padding-bottom: 2rem;
     }
 
     p{

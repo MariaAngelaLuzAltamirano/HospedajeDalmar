@@ -133,7 +133,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     
   openDialog(info): void{
     const dialogRef = this.dialog.open(Modal4Component, {
-      width:"500px",
+      width:"100%",
       data: {
         info,
         message:'Editar Card',

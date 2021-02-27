@@ -1,4 +1,11 @@
-<h1>{{data.message}}</h1>
+<div class="header-modal">
+    <button mat-mini-fab (click)="cerrar()">
+       <mat-icon>clear</mat-icon>
+    </button>
+    <h1>{{data.message}}</h1>   
+</div>
+   
+
 <mat-dialog-content>
     <div *ngIf="data.info; else newCard">
         <app-editar-prod [card]="data.info"></app-editar-prod>

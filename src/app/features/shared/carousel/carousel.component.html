@@ -1,5 +1,5 @@
-<div *ngIf="modo==='normal'" class="contenedorHome">
-  <div class="dsc-carousel" [ngStyle]="{'min-height': finalHeight}" (panleft)="setBack()" (panright)="setNext()">
+<div *ngIf="modo==='normal'" class="contenedorHome"> 
+  <div class="dsc-carousel" [ngStyle]="{'min-height': finalHeight}" (swiperight)="setBack()" (swipeleft)="setNext()" >
         <div class="dsc-carousel__btns">
             <mat-icon (click)="setBack()">keyboard_arrow_left</mat-icon>
             <mat-icon (click)="setNext()">keyboard_arrow_right</mat-icon>
@@ -20,7 +20,7 @@
     </div>
 </div>
 <div *ngIf="modo==='admin'">
-  <div class="dsc-carousel" [ngStyle]="{'min-height': finalHeight}" (panleft)="setBack()" (panright)="setNext()">
+  <div class="dsc-carousel" [ngStyle]="{'min-height': finalHeight}" (swiperight)="setBack()" (swipeleft)="setNext()">
         <div class="dsc-carousel__btns">
         <mat-icon (click)="setBack()">keyboard_arrow_left</mat-icon>
         <mat-icon (click)="setNext()">keyboard_arrow_right</mat-icon>

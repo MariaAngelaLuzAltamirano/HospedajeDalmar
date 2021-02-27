@@ -1,21 +1,11 @@
 .contenedor-login{
-    height: 100%;
+    height: 50rem;
     padding: 5rem 1rem;
-    background-image: url("https://i.pinimg.com/originals/30/b4/55/30b45544b8488a70ec712ca95d0c6bbb.jpg");
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/hospedaje-dalmar.appspot.com/o/shared%2F2582ecdc39bd9c18a2655322ff7cda4e.jpg?alt=media&token=01947c52-4ec2-4229-98c3-4f64920139d9");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-}
-.contenedor-login::before{
-    content: "";
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(90deg, #F5F5F5, #d3d3d3);
-    opacity: 0.1;
 }
 
 mat-card{
@@ -62,5 +52,12 @@ input::placeholder{
 
 mat-form-field{
     font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .contenedor-login{
+        height: 70rem;
+    }
+    
 }
 

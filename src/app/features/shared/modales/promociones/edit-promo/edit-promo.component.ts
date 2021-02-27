@@ -97,7 +97,6 @@ export class EditPromoComponent implements OnInit {
       console.log(this.selectFile);
       reader.onload = (e) => {
         this.previewUrl = reader.result;
-        console.log(this.previewUrl);
       };
       reader.readAsDataURL(this.selectFile);
     }

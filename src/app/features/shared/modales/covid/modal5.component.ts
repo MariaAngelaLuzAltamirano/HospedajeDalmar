@@ -45,6 +45,11 @@ export class Modal5Component implements OnInit {
     ngOnInit(): void {
       this.initValuesForm();
     }
+
+    cerrar(){
+      this.dialog.close();
+    }
+  
   
     editCard(){
       this.service.startLoading();

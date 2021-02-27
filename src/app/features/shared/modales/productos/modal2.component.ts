@@ -14,4 +14,8 @@ export class Modal2Component implements OnInit {
   ngOnInit(): void {
   }
 
+  cerrar(){
+    this.dialog.close();
+  }
+
 }

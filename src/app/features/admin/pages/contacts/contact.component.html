@@ -1,48 +1,53 @@
-<mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-</mat-form-field>
+<div>
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar.." #input>
+    </mat-form-field>
+
+    <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="apellido" >
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Apellido</mat-header-cell>
+            <mat-cell *matCellDef="let element" data-label="apellido" > {{element.apellido}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+            <mat-cell *matCellDef="let element" data-label="nombre"> {{element.nombre}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="celular" class="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Celular </mat-header-cell>
+            <mat-cell *matCellDef="let element" data-label="celular"> {{element.celular}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="email" >
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+            <mat-cell *matCellDef="let element" data-label="email"> {{element.email}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="actions" >
+            <mat-header-cell *matHeaderCellDef > Acciones</mat-header-cell>
+            <mat-cell *matCellDef="let element" data-label="acciones">
+                <button mat-stroked-button color="secondary"(click)="onSeeMessage(element)">
+                    <mat-icon>mail_outline</mat-icon>
+                </button>
+                <button mat-stroked-button color="warn"(click)="onDeleteMessage(element)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
   
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8"  matSort >
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'resaltado': row.leido == false}">
+      </mat-row>
 
-    <ng-container matColumnDef="apellido" >
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido</th>
-        <td mat-cell *matCellDef="let element" > {{element.apellido}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="celular" class="email">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Celular </th>
-        <td mat-cell *matCellDef="let element"> {{element.celular}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="email" >
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="actions" >
-        <th mat-header-cell *matHeaderCellDef > Acciones</th>
-        <td mat-cell *matCellDef="let element">
-            <button mat-stroked-button color="secondary"(click)="onSeeMessage(element)">
-                <mat-icon>mail_outline</mat-icon>
-            </button>
-            <button mat-stroked-button color="warn"(click)="onDeleteMessage(element)">
-                <mat-icon>delete</mat-icon>
-            </button>
-        </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'resaltado': row.leido == false}"></tr>
-
-    <!-- Row shown when there is no matching data. -->
-    <tr class="mat-row" *matNoDataRow>
+      <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-    </tr>
-</table>
-<mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+      </tr>
+    </mat-table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+    <div class="relleno"></div>   
+  </div>
+  

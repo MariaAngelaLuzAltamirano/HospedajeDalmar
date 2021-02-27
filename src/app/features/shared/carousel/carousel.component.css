@@ -87,9 +87,6 @@ button{
 
 
 @media (max-width: 768px) {
-    .dsc-carousel__btns{
-        visibility: hidden;
-   }
    .botonCarrusel{
     flex-direction: column;
     }

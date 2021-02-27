@@ -147,7 +147,6 @@ export class ProductosComponent implements OnInit {
         })
       })
       this.services.hideLoading();
-      console.log(this.productos);
     });
   }
 
@@ -162,7 +161,7 @@ export class ProductosComponent implements OnInit {
 
   openDialog(info?): void{
     const dialogRef = this.dialog.open(Modal2Component, {
-      width:"500px",
+      width:"100%",
       data: {
         info,
         message: info? 'Editar Card' : 'Nueva Card',
@@ -220,8 +219,8 @@ export class ProductosComponent implements OnInit {
   }
 
   enviarWA({nombre}, form){
-    const fechaIngreso= `${form.value.range.start._i.date}/${form.value.range.start._i.month+1}/${form.value.range.start._i.year}`;
-    const fechaSalida= `${form.value.range.end._i.date}/${form.value.range.end._i.month+1}/${form.value.range.end._i.year}`;
+    const fechaIngreso= `${form.value.range.start.toLocaleDateString()}`;
+    const fechaSalida= `${form.value.range.end.toLocaleDateString()}`;
     window.open(`https://wa.me/+5493513268151?text=Hola%20Hospedaje%20Dalmar,%20me%20gustaría%20saber%20disponibilidad%20de%20la%20${nombre}%20desde%20${fechaIngreso}%20al%20${fechaSalida}%20para%20${form.value.adulto}%20adultos%20y%20${form.value.nino}%20niños`, "_blank");
     form.reset();
     form.markAsPristine();

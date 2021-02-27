@@ -27,33 +27,27 @@ export class LoginComponent implements OnInit {
     this.form = new FormGroup(this.FormObject);
   }
 
-  onLogin(){
-    const {email, password} = this.form.value;
-    const result = this.service.login(email, password);
-    result.then((response) => {
-      response.token.then((res) =>{
-
-        this.verificarAdmin(response.usuario).then(() =>{
-
-          if(this.admin === true){
-            localStorage.setItem("token",res.token);   
-            this.router.navigate(['admin']);
-            this.expiredToken();
-            Swal.fire({
-            title: 'Atención!',
-            text: 'Por razones de seguridad, dentro de un Hora deberá loguerse nuevamente!',
-            icon:'success'           
-            });
-          }else{
-            Swal.fire(
-            'Ingreso Denegado!',
-            'No es un usuario Administrador',
-            'success');
-            this.service.logout();
-            this.router.navigate(['login']);
-          }           
-        })
-      })
+  async onLogin(){
+    const {email, password} = this.form.value; 
+    const result = await this.service.login(email, password);
+    this.verificarAdmin(result.usuario).then(() =>{
+      if(this.admin === true){
+        localStorage.setItem("token",result.token);   
+        this.router.navigate(['admin']);
+        this.expiredToken();
+        Swal.fire({
+        title: 'Atención!',
+        text: 'Por razones de seguridad, dentro de un Hora deberá loguerse nuevamente!',
+        icon:'success'           
+        });
+      }else{
+        Swal.fire(
+        'Ingreso Denegado!',
+        'No es un usuario Administrador',
+        'success');
+        this.service.logout();
+        this.router.navigate(['login']);
+      }           
     })
   }
 

@@ -43,6 +43,10 @@ export class Modal4Component implements OnInit {
     this.initValuesForm();
   }
 
+  cerrar(){
+    this.dialog.close();
+  }
+
   editCard(){
     this.service.startLoading();
     const id = parseInt(this.data.info.id)+1;

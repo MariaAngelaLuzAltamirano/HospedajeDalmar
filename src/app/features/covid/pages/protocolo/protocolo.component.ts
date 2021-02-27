@@ -41,7 +41,7 @@ export class ProtocoloComponent implements OnInit {
 
   openDialog(info){
     const dialogRef = this.dialog.open(Modal5Component, {
-      width:"500px",
+      width:"100%",
       data: {
         info,
         message:'Editar Card',

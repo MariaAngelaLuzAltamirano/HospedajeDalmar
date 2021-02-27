@@ -84,7 +84,7 @@ h3{
   }
 
   .mat-list-base, .mat-list-item, .mat-list-item-content{
-    margin-top: 1rem;
+    margin: 1rem 0;
   }
 
   mat-nav-list a{

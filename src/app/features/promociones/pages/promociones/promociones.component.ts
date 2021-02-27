@@ -67,7 +67,7 @@ export class PromocionesComponent implements OnInit {
 
   openDialog(info?): void{
     const dialogRef = this.dialog.open(Modal3Component, {
-      width:"500px",
+      width:"100%",
       data: {
         info,
         message: info? 'Editar Card' : 'Nueva Card',

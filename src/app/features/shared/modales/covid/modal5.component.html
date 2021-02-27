@@ -1,4 +1,10 @@
-<h1>{{data.message}}</h1>
+<div class="header-modal">
+    <button mat-mini-fab (click)="cerrar()">
+       <mat-icon>clear</mat-icon>
+    </button>
+    <h1>{{data.message}}</h1>   
+</div>
+   
 <mat-dialog-content >
     <div>
         <form [formGroup]="CardEdit" (ngSubmit)="editCard()">
@@ -42,7 +48,7 @@
                     <input type="file" accept="image/*" formControlName="imagen" (change)= "handleImage($event)" >
                 </label>
             </div>
-            <button [disabled]="CardEdit.invalid" mat-raised-button color="primary" type="submit" [mat-dialog-close]="true">Enviar</button>
+            <button class="enviar" [disabled]="CardEdit.invalid" mat-raised-button color="primary" type="submit" [mat-dialog-close]="true">Enviar</button>
         </form>
     </div>
 </mat-dialog-content>

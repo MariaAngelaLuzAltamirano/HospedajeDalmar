@@ -2,3 +2,12 @@ h1{
     text-align: center;
     font-size: 1.5rem;
 }
+.header-modal{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+mat-icon{
+    color:  #fff;
+}

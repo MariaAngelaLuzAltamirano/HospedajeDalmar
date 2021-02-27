@@ -11,7 +11,7 @@ form{
     font-size: 1.25rem;
 }
 
-button{
+.enviar{
     display: block;
     margin: 0 auto;
     margin-top: 1rem;
@@ -44,7 +44,18 @@ mat-icon{
 }
 
 img{
-    width: 400px;
+    width: 100%;
     height: auto;
     margin-bottom: 1rem;
+}
+
+.header-modal{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.header-modal mat-icon{
+    color:  #fff;
+    margin: 0rem;
 }

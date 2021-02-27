@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,8 +14,15 @@ import { ContainerAppComponent } from './container-app/container-app.component';
 import { HammerModule } from '@angular/platform-browser';
 import { OwlModule } from 'ngx-owl-carousel';
 import { SharedModule } from './features/shared/shared.module';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
+export class MyHammerConfig extends HammerGestureConfig {
+    overrides = <any> {
+        'pinch': { enable: false },
+        'rotate': { enable: false }
+    }
+}
 
 @NgModule({
   declarations: [
@@ -37,7 +44,12 @@ import { SharedModule } from './features/shared/shared.module';
     OwlModule
   ],
   providers: [
-    { provide: BUCKET, useValue: 'gs://hospedaje-dalmar.appspot.com'}
+    { provide: BUCKET, useValue: 'gs://hospedaje-dalmar.appspot.com'},
+    { provide: LocationStrategy, useClass: HashLocationStrategy},
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: MyHammerConfig
+  }
   ],
   bootstrap: [AppComponent]
 })

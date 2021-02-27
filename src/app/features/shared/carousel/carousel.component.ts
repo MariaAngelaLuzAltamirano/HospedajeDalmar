@@ -43,9 +43,6 @@ export class CarouselComponent implements OnInit,  OnChanges{
     });
     this.finalHeight = this.height ? `${this.height}px` : '100vh' ;
     this.mapeoItems();
-    const timer = window.setInterval(()=>{
-      this.setNext();
-    }, 7000);
     this.services.hideLoading();
   }
 
@@ -102,7 +99,7 @@ export class CarouselComponent implements OnInit,  OnChanges{
 
   openDialog(info?): void{
     const dialogRef = this.dialog.open(ModalComponent, {
-      width:"400px",
+      width:"100%",
       data: {
         info,
         database :this.database,
@@ -112,10 +109,10 @@ export class CarouselComponent implements OnInit,  OnChanges{
       },
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.services.startLoading();
-      setTimeout(() =>{
-        this.services.hideLoading();
-      }, 1000)
+      // this.services.startLoading();
+      // setTimeout(() =>{
+      //   this.services.hideLoading();
+      // }, 1000)
     });
   }
 

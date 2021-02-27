@@ -16,6 +16,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import {MatSelectModule} from '@angular/material/select';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 
 
 
@@ -39,6 +41,10 @@ import {MatSelectModule} from '@angular/material/select';
         MatDatepickerModule,
         MatMomentDateModule,
         MatSelectModule,
+
+        FlexLayoutModule,
+        MatNativeDateModule,
+        MatRippleModule
     ],
     exports: [
         MatToolbarModule,
@@ -57,6 +63,10 @@ import {MatSelectModule} from '@angular/material/select';
         MatDialogModule,
         MatDatepickerModule,
         MatSelectModule,
+
+        FlexLayoutModule,
+        MatNativeDateModule,
+        MatRippleModule
     ]
 })
 

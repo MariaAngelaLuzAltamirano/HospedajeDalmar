@@ -8,6 +8,10 @@ mat-nav-list{
     padding-top: 1rem;
 }
 
+mat-list-item{
+    margin: 2rem 0;  
+}
+
 a{
     display: block;
     margin: 0 auto;
@@ -15,4 +19,8 @@ a{
 
 a:hover, a:active{
     color: lightgray;
+}
+
+mat-nav-list a, mat-icon{
+    font-size: 1.5rem;
 }

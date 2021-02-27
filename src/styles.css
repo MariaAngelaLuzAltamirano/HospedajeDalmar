@@ -1,6 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+/* Fuente de Letra*/
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro&display=swap');
+
+/*con la que hice el proyecto
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap'); */
+
 * {
     margin: 0;
     padding: 0;
@@ -10,4 +14,4 @@
     -webkit-box-sizing: border-box; }
   
 
-html, body { height: 100%; zoom: 90% }
+html, body { height: 100%; zoom: 90%; background-color: #006064;}

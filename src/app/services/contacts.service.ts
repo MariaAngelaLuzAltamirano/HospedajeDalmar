@@ -15,7 +15,7 @@ export class ContactsService extends BaseService{
   
   postMess(obj) {
     this.setEndpoint(this.common);
-    return this.post(obj);
+    return this.postM(obj);
   }
 
   updateMess(id, obj) {
@@ -28,8 +28,14 @@ export class ContactsService extends BaseService{
     return this.delete(id, obj);
   }
 
-  getCardExample(){
-    return this.getCards
+
+
+  async postM(body) {
+    try{ 
+     return await this.http.post(`${this.urlServer}/${this.endopoint}.json`, body).toPromise();
+    }catch(e){
+      this.handlerError(e);
+    }
   }
 
 }

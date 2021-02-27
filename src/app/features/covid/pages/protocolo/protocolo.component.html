@@ -14,20 +14,22 @@
 </div>
 <div *ngIf="modo==='admin'">
     <div class="contenedor-covid" *ngFor="let covid of covidData">
-        <div>
+        <div class="contenido">
+            <div>
             <h1>{{covid.titulo1}}</h1>
             <p>{{covid.parrafo1.parte1}}</p>
             <p>{{covid.parrafo1.parte2}} <a [href]="covid.parrafo1.etiquetaA.href" target="_blank">{{covid.parrafo1.etiquetaA.text}}</a> {{covid.parrafo1.parte3}} </p>
             
             <h2>{{covid.titulo2}}</h2>
-            <p>{{covid.parrafo2}}</p>
-        </div> 
-        <div>
+            <p>{{covid.parrafo2}}</p>                
+            </div>
             <div class="editCard">
                 <button mat-mini-fab color="primary" (click)="editarCard(covid)">
                 <mat-icon>edit</mat-icon>
                 </button>              
             </div>
+        </div> 
+        <div>
             <img [src]="covid.urlImg">             
         </div> 
     </div>

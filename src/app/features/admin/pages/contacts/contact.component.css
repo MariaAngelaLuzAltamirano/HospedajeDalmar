@@ -1,7 +1,6 @@
-/* Structure */
-table {
+.mat-table{
     width: 95%;
-    margin-left: 1rem;
+    margin: 0 0 1rem 1rem;
 }
 mat-form-field{
     padding: 0 1rem;    
@@ -9,10 +8,13 @@ mat-form-field{
     width: 100%;
 }
 
-th{
-    font-size: 2rem;
+mat-header-cell{
+    font-size: 1.75rem;
+    color: #006064;
+    font-weight: bold;
+
 }
-td{
+mat-cell{
     font-size: 1.5rem;
 }
 
@@ -27,9 +29,67 @@ button{
 
 .resaltado { background-color: #3bffde3a; }
 
-@media (min-width: 768px) {
-    table{
-        margin-left: 2rem;
+.relleno{
+    height: 7rem;
+}
+
+@media (max-width: 768px) {
+    mat-header-cell{
+        display: none;
+    }
+
+    .mat-table {
+        border: 0;
+        vertical-align: middle;
+        padding: 1rem;
+    }
+    
+    .mat-table caption {
+    font-size: 1em;
+    }
+
+    .mat-table .mat-row {
+    border-top: 0.5rem solid #006064;
+    display: block;
+    padding-bottom: 3rem;
+    }
+    
+    .mat-table .mat-cell {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 1.2rem;
+    text-align: right;
+    font-weight: bold;
+    height:30px;
+    margin-bottom: 4%;
+    }
+    .mat-table .mat-cell:before {
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: .85em;
+    }
+
+    .mat-cell:before {
+    font-weight: bold;
+    color: #006064;
+    }
+
+    .mat-table .mat-cell:last-child {
+    border-bottom: 0;
+    }
+    .mat-table .mat-cell:first-child {
+    margin-top: 2rem;
+    }
+
+    mat-cell:first-of-type, mat-header-cell:first-of-type, mat-footer-cell:first-of-type {
+        padding-left: 0;
+    }
+
+    mat-form-field{ 
+        font-size: 1.5rem;
     }
     
 }
+
