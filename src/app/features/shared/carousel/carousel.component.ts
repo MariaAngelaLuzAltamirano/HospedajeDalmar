@@ -32,12 +32,12 @@ export class CarouselComponent implements OnInit,  OnChanges{
   public currentPosition = 0;
 
   constructor(private rutaAdm: ActivatedRoute, public dialog: MatDialog, private services: LoadingScreenService) {
-    this.services.startLoading(); 
     this.modo = this.modo || 'normal';
     this.items= [];
   }
 
   ngOnInit(){
+    this.services.startLoading(); 
     this.rutaAdm.data.subscribe(data =>{
       this.modo = data['modo']|| this.modo;
     });
@@ -108,12 +108,7 @@ export class CarouselComponent implements OnInit,  OnChanges{
         message: info? 'Eliminar Imagen' : 'Nueva Imagen',
       },
     });
-    dialogRef.afterClosed().subscribe(() => {
-      // this.services.startLoading();
-      // setTimeout(() =>{
-      //   this.services.hideLoading();
-      // }, 1000)
-    });
+    dialogRef.afterClosed().subscribe(() => {});
   }
 
   ngOnChanges(changes: SimpleChanges) {

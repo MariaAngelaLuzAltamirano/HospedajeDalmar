@@ -19,13 +19,12 @@ export class ProtocoloComponent implements OnInit {
 
   modo: string;
   constructor(public rutaAdm: ActivatedRoute, public dialog: MatDialog, public service: CaruoselService, public services: LoadingScreenService, public utils: UtilsService) {
-    this.services.startLoading(); 
     this.modo = 'normal';
     this.detectarCambio();
   }
 
   async ngOnInit() {
-    
+    this.services.startLoading(); 
     this.rutaAdm.data.subscribe(data =>{
       this.modo = data['modo']|| this.modo;
     })
@@ -59,6 +58,7 @@ export class ProtocoloComponent implements OnInit {
   }
 
   detectarCambio(){
+    this.services.startLoading();
     const refCovid = this.service.afDB.database.ref(`${this.database}`);
     refCovid.on('value', (data) => {
       if(data){
@@ -67,6 +67,7 @@ export class ProtocoloComponent implements OnInit {
          });
       }
     });
+    this.services.hideLoading();
   }
 
 }

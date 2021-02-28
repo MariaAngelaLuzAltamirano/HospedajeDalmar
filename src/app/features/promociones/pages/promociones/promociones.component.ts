@@ -20,11 +20,12 @@ export class PromocionesComponent implements OnInit {
   public database: string = 'promociones';
 
   constructor(public rutaAdm: ActivatedRoute, public dialog: MatDialog, public services: PromocionesService, public service: LoadingScreenService, public utils: UtilsService) {
-    this.service.startLoading();
-    this.modo = 'normal'
+    this.modo = 'normal';
+    this.detectarCambio();
   }
 
   ngOnInit(){
+    this.service.startLoading();
     this.rutaAdm.data.subscribe(data =>{
       this.modo = data['modo']|| this.modo;
     });
@@ -32,7 +33,6 @@ export class PromocionesComponent implements OnInit {
       this.promocionesData = data;
       this.service.hideLoading();
     })
-    this.detectarCambio();
     window.scrollTo(0,0);
   }
 
@@ -45,6 +45,7 @@ export class PromocionesComponent implements OnInit {
   }
 
   detectarCambio(){
+    this.service.startLoading();
     const refProd = this.services.afDB.database.ref(`${this.database}`);
     refProd.on('value', (data) => {
       if(data){
@@ -53,6 +54,7 @@ export class PromocionesComponent implements OnInit {
          });
       }
     });
+    this.service.hideLoading();
   }
 
 

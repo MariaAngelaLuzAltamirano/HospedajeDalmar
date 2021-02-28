@@ -1,5 +1,5 @@
 .contenedor-login{
-    height: 50rem;
+    height: 60rem;
     padding: 5rem 1rem;
     background-image: url("https://firebasestorage.googleapis.com/v0/b/hospedaje-dalmar.appspot.com/o/shared%2F2582ecdc39bd9c18a2655322ff7cda4e.jpg?alt=media&token=01947c52-4ec2-4229-98c3-4f64920139d9");
     background-size: cover;
@@ -54,10 +54,19 @@ mat-form-field{
     font-size: 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1280px) {
+    .contenedor-login{
+        height: 65rem;
+    }
+    
+}
+
+
+@media (min-width: 	1920px) {
     .contenedor-login{
         height: 70rem;
     }
     
 }
+
 

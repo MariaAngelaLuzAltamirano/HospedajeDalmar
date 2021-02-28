@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { ProductosService } from './../../../../services/productos.service';
 import { Producto, ProductoHTML } from './../../../../interfaces/productos'
 import { ActivatedRoute } from '@angular/router';
-import {FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 import { Modal2Component } from 'src/app/features/shared/modales/productos/modal2.component';
@@ -45,7 +45,6 @@ export class ProductosComponent implements OnInit {
 
 
   constructor(public service: ProductosService, public rutaAdm: ActivatedRoute, public fb: FormBuilder, public dialog: MatDialog, public services: LoadingScreenService, public utils: UtilsService) {
-    this.services.startLoading();
     this.modo = 'normal';
     this.detectarCambio();
     this.productos = [];
@@ -53,7 +52,7 @@ export class ProductosComponent implements OnInit {
   }
 
   ngOnInit(){
-    
+    this.services.startLoading();
     this.formDate = this.fb.group({
       range : new FormGroup({
         start: new FormControl('', Validators.required),
@@ -83,9 +82,10 @@ export class ProductosComponent implements OnInit {
           producto: e,
         })
       })
-      this.services.hideLoading();
+      this.services.hideLoading(); 
     })
     window.scrollTo(0,0);
+
 
     //ejemplo de change en un form reactive
 
@@ -122,15 +122,109 @@ export class ProductosComponent implements OnInit {
       let arrayImg = Object.values(e.imgs);
       let arrayImgId = this.utils.agregarId(arrayImg, e.imgs);
       e.imgs = arrayImgId.filter(this.utils.filtrarPorEstado);
-      e.servicios = this.utils.filterResult(e.servicios);
+      let servicios = this.utils.filterResult(e.servicios);
+      e.servicios = this.idsServicio(servicios);
       return e;
     });
     return arrayFinal;
   }
 
+  idsServicio(serv){
+    let arrayNuevo = [];
+    serv.forEach(element => {
+      if(element === "bed"){
+        const servicio = {
+          nombre: "Cama",
+          item: element
+        };
+        arrayNuevo.push(servicio);
+      }
+      if(element === "bathtub"){
+        const servicio = {
+          nombre: "Baño priv.",
+          item: element
+        };
+        arrayNuevo.push(servicio);
+      }
+      if(element === "countertops"){
+        const servicio = {
+          nombre: "Cocina",
+          item: element
+        };
+        arrayNuevo.push(servicio);
+      }
+      if(element === "garage"){
+        const servicio = {
+          nombre: "Cochera",
+          item: element
+        };
+        arrayNuevo.push(servicio);
+      }
+      if(element === "tv"){
+        const servicio = {
+          nombre: "Televisión",
+          item: element
+        };
+        arrayNuevo.push(servicio);
+      }
+      if(element === "wifi"){
+        const servicio = {
+          nombre: "Internet",
+          item: element
+        };
+        arrayNuevo.push(servicio);
+      }
+      if(element === "phone"){
+        const servicio = {
+          nombre: "Teléfono",
+          item: element
+        };
+        arrayNuevo.push(servicio);
+      }
+      if(element === "ac_unit"){
+        const servicio = {
+          nombre: "Aire Acond.",
+          item: element
+        };
+        arrayNuevo.push(servicio);
+      }
+      if(element === "balcony"){
+        const servicio = {
+          nombre: "Balcon",
+          item: element
+        };
+        arrayNuevo.push(servicio);
+      }
+      if(element === "local_fire_department"){
+        const servicio = {
+          nombre: "Calefacción",
+          item: element
+        };
+        arrayNuevo.push(servicio);
+      }
+      if(element === "lock"){
+        const servicio = {
+          nombre: "Seguridad",
+          item: element
+        };
+        arrayNuevo.push(servicio);
+      }
+      if(element === "pets"){
+        const servicio = {
+          nombre: "Mascotas",
+          item: element
+        };
+        arrayNuevo.push(servicio);
+      }
+    });
+    return arrayNuevo;
+  }
+
   detectarCambio(){
+    this.services.startLoading();
     const refProd = this.service.afDB.database.ref(`${this.databaseProd}`);
     refProd.on('value', async () => {
+      this.services.startLoading();
       this.productosData = await this.getProductos();
       this.productos.length = 0;
       this.productosData.forEach((e)=>{
@@ -146,8 +240,8 @@ export class ProductosComponent implements OnInit {
           producto: e,
         })
       })
-      this.services.hideLoading();
     });
+    this.services.hideLoading();
   }
 
   //funciones del html
@@ -221,7 +315,7 @@ export class ProductosComponent implements OnInit {
   enviarWA({nombre}, form){
     const fechaIngreso= `${form.value.range.start.toLocaleDateString()}`;
     const fechaSalida= `${form.value.range.end.toLocaleDateString()}`;
-    window.open(`https://wa.me/+5493513268151?text=Hola%20Hospedaje%20Dalmar,%20me%20gustaría%20saber%20disponibilidad%20de%20la%20${nombre}%20desde%20${fechaIngreso}%20al%20${fechaSalida}%20para%20${form.value.adulto}%20adultos%20y%20${form.value.nino}%20niños`, "_blank");
+    window.open(`https://wa.me/+5493513268151?text=Hola%20Hospedaje%20Dalmar,%20me%20gustaría%20saber%20disponibilidad%20de%20el/la%20${nombre}%20desde%20${fechaIngreso}%20al%20${fechaSalida}%20para%20${form.value.adulto}%20adultos%20y%20${form.value.nino}%20niños`, "_blank");
     form.reset();
     form.markAsPristine();
     form.markAsUntouched();

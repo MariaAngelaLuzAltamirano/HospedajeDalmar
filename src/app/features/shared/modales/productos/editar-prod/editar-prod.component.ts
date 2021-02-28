@@ -34,7 +34,7 @@ export class EditarProdComponent implements OnInit {
       capacidad: this.card.capacidad,
       descripcion: this.card.descripcion,
       valorPorNoche: this.card.valorPorNoche,
-      servicios: this.card.servicios
+      // servicios: this.card.servicios.item
     });
   }
 

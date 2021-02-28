@@ -25,11 +25,10 @@ export class ContactComponent implements OnInit {
   dataSource = new MatTableDataSource();
 
   
-  constructor(public service: ContactsService, public services: LoadingScreenService, public utils: UtilsService) {
-    this.services.startLoading();
-   }
+  constructor(public service: ContactsService, public services: LoadingScreenService, public utils: UtilsService) {}
 
   async ngOnInit() {
+    this.services.startLoading(); 
     this.dataSource.data = await this.getMessages(); 
     this.services.hideLoading();
   }

@@ -10,8 +10,9 @@
                     <div></div>
                     <p>Servicios</p>
                     <mat-list>
-                        <button mat-icon-button color="primary" class="iconosFa" *ngFor="let item of producto.producto.servicios; let i = index">
-                        <mat-icon>{{item}}</mat-icon>
+                        <button class="iconosFa"  mat-icon-button color="primary" *ngFor="let item of producto.producto.servicios; let i = index" title="{{item.nombre}}">
+                            <span>{{item.nombre}}</span><br>
+                            <mat-icon>{{item.item}}</mat-icon>
                         </button>
                     </mat-list>
                     <button class="detalles" mat-raised-button color="primary" (click)="verMas(producto.producto)">Detalles</button>
@@ -76,8 +77,9 @@
                     <div></div>
                     <p>Servicios</p>
                     <mat-list>
-                        <button mat-icon-button color="primary" class="iconosFa" *ngFor="let item of producto.producto.servicios; let i = index">
-                        <mat-icon>{{item}}</mat-icon>
+                        <button class="iconosFa"  mat-icon-button color="primary" *ngFor="let item of producto.producto.servicios; let i = index" title="{{item.nombre}}">
+                            <span>{{item.nombre}}</span><br>
+                            <mat-icon>{{item.item}}</mat-icon>
                         </button>
                     </mat-list>
                     <button class="detalles" mat-raised-button color="primary" (click)="verMas(producto.producto)">Detalles</button>
@@ -121,5 +123,6 @@
         </div>
     </mat-card> 
 </div>
+
 
 

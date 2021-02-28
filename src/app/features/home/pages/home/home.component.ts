@@ -31,12 +31,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   constructor(public rutaAdm: ActivatedRoute, public service: CaruoselService, public serv: ProductosService, public services: LoadingScreenService, public dialog: MatDialog,
     public utils: UtilsService ) { 
-    this.services.startLoading();
     this.modo = 'normal';
     this.detectarCambio();
   }
 
   async ngOnInit(){
+    this.services.startLoading();
     this.rutaAdm.data.subscribe(data =>{
       this.modo = data['modo']|| this.modo;
     })
@@ -101,6 +101,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
   detectarCambio(){
+    this.services.startLoading();
     const refProd = this.service.afDB.database.ref(`${this.databaseProd}`);
     refProd.on('value', (data) => {
       if(data){
@@ -125,6 +126,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         });
       }
     });
+    this.services.hideLoading();
   }
 
   editarCard(e){

@@ -16,6 +16,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 
@@ -41,7 +42,7 @@ import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
         MatDatepickerModule,
         MatMomentDateModule,
         MatSelectModule,
-
+        MatProgressSpinnerModule,
         FlexLayoutModule,
         MatNativeDateModule,
         MatRippleModule
@@ -63,7 +64,7 @@ import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
         MatDialogModule,
         MatDatepickerModule,
         MatSelectModule,
-
+        MatProgressSpinnerModule,
         FlexLayoutModule,
         MatNativeDateModule,
         MatRippleModule
